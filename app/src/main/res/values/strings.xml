@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">Welcare-Catcher</string>
-    <string name="profile">PROFILE</string>
-    <string name="feed">FEED</string>
-    <string name="activity">ACTIVITY</string>
-    <string name="settings">SETTINGS</string>
+    <string name="app_name">복지캐쳐</string>
+    <string name="home">홈화면</string>
+    <string name="facility">주변 관련시설</string>
+    <string name="account">계정 설정</string>
+    <string name="setting">어플 설정</string>
 </resources>
