@@ -17,6 +17,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".FacilityListActivity"/>
+        <activity android:name=".AccountActivity"/>
+        <activity android:name=".FacilityInfoActivity"/>
+        <activity android:name=".SelfcheckActivity"/>
+        <activity android:name=".SettingActivity"/>
     </application>
 
 </manifest>
