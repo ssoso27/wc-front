@@ -1,4 +1,4 @@
-package com.example.welcare_catcher;
+package com.uuay.welcare_catcher;
 
 import org.junit.Test;
 

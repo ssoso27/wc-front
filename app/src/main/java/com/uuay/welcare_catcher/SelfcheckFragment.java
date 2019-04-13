@@ -1,4 +1,4 @@
-package com.example.welcare_catcher;
+package com.uuay.welcare_catcher;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -6,8 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class HomeFragment extends Fragment {
-    public HomeFragment() {
+import com.uuay.welcare_catcher.R;
+
+public class SelfcheckFragment extends Fragment {
+    public SelfcheckFragment() {
 
     }
 
@@ -15,6 +17,6 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.frag_home, container, false);
+        return inflater.inflate(R.layout.frag_selfcheck, container, false);
     }
 }

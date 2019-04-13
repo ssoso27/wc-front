@@ -1,4 +1,4 @@
-package com.example.welcare_catcher;
+package com.uuay.welcare_catcher;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 
+import com.uuay.welcare_catcher.R;
 import com.yalantis.guillotine.animation.GuillotineAnimation;
 
 public class MainActivity extends AppCompatActivity {

@@ -28,7 +28,7 @@
                 style="@style/ImageView.Hamburger"
                 android:src="@drawable/ic_menu_90" />
 
-            <com.example.welcare_catcher.CanaroTextView
+            <com.uuay.welcare_catcher.CanaroTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

@@ -25,7 +25,7 @@
             style="@style/ImageView.GuillotineItem"
             android:src="@drawable/ic_profile" />
 
-        <com.example.welcare_catcher.CanaroTextView
+        <com.uuay.welcare_catcher.CanaroTextView
             style="@style/TextView.GuillotineItem"
             android:text="@string/home" />
     </LinearLayout>
@@ -38,7 +38,7 @@
             style="@style/ImageView.GuillotineItem"
             android:src="@drawable/ic_feed" />
 
-        <com.example.welcare_catcher.CanaroTextView
+        <com.uuay.welcare_catcher.CanaroTextView
             style="@style/TextView.GuillotineItem"
             android:text="@string/facility" />
     </LinearLayout>
@@ -51,7 +51,7 @@
             style="@style/ImageView.GuillotineItem"
             android:src="@drawable/ic_activity_active" />
 
-        <com.example.welcare_catcher.CanaroTextView
+        <com.uuay.welcare_catcher.CanaroTextView
             style="@style/TextView.GuillotineItem"
             android:text="@string/account" />
     </LinearLayout>
@@ -64,7 +64,7 @@
             style="@style/ImageView.GuillotineItem"
             android:src="@drawable/ic_settings" />
 
-        <com.example.welcare_catcher.CanaroTextView
+        <com.uuay.welcare_catcher.CanaroTextView
             style="@style/TextView.GuillotineItem"
             android:text="@string/setting" />
     </LinearLayout>
