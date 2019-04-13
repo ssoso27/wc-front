@@ -8,7 +8,7 @@ import com.kakao.auth.KakaoSDK;
 
 public class GlobalApplication extends Application {
     private static volatile GlobalApplication instance = null;
-    private static final String CANARO_EXTRA_BOLD_PATH = "fonts/canaro_extra_bold.otf";
+    private static final String NANUM_BARUN_GOTHIC_TTF = "fonts/NanumBarunGothic.ttf";
     public static Typeface canaroExtraBold;
 
     public static Context getGlobalApplicationContext() {
@@ -27,7 +27,7 @@ public class GlobalApplication extends Application {
     }
 
     private void initTypeface() {
-        canaroExtraBold = Typeface.createFromAsset(getAssets(), CANARO_EXTRA_BOLD_PATH);
+        canaroExtraBold = Typeface.createFromAsset(getAssets(), NANUM_BARUN_GOTHIC_TTF);
 
     }
 }
