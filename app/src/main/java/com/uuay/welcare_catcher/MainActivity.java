@@ -41,10 +41,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
             }
 
-            FragmentManager fm = getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fm.beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_place, fg);
-            fragmentTransaction.commit();
+            setFragment(fg);
         }
     }
 
@@ -54,7 +51,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setToolbar();
+        setFragment(new HomeFragment());
+        setEventListener();
+    }
 
+    private void setEventListener() {
+        TVOnClickListener tvOnClickListener = new TVOnClickListener();
+
+        findViewById(R.id.menu_home).setOnClickListener(tvOnClickListener);
+        findViewById(R.id.menu_account).setOnClickListener(tvOnClickListener);
+        findViewById(R.id.menu_facility).setOnClickListener(tvOnClickListener);
+        findViewById(R.id.menu_setting).setOnClickListener(tvOnClickListener);
+    }
+
+    private void setToolbar() {
         Toolbar toolbar = findViewById(R.id.toolbar);
         FrameLayout root = findViewById(R.id.root);
         View contentHamburger = findViewById(R.id.content_hamburger);
@@ -72,17 +83,12 @@ public class MainActivity extends AppCompatActivity {
                 .setActionBarViewForAnimation(toolbar)
                 .setClosedOnStart(true)
                 .build();
+    }
 
+    public void setFragment(Fragment fragment) {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fm.beginTransaction();
-        fragmentTransaction.add(R.id.fragment_place, new HomeFragment());
+        fragmentTransaction.replace(R.id.fragment_place, fragment);
         fragmentTransaction.commit();
-
-        TVOnClickListener tvOnClickListener = new TVOnClickListener();
-
-        findViewById(R.id.menu_home).setOnClickListener(tvOnClickListener);
-        findViewById(R.id.menu_account).setOnClickListener(tvOnClickListener);
-        findViewById(R.id.menu_facility).setOnClickListener(tvOnClickListener);
-        findViewById(R.id.menu_setting).setOnClickListener(tvOnClickListener);
     }
 }

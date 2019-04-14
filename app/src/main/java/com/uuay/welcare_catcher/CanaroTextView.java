@@ -18,7 +18,7 @@ public class CanaroTextView extends AppCompatTextView {
 
     public CanaroTextView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        setTypeface(App.canaroExtraBold);
+        setTypeface(GlobalApplication.canaroExtraBold);
     }
 
 }
