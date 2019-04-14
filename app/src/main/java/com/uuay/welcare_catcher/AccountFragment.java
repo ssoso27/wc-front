@@ -3,16 +3,17 @@ package com.uuay.welcare_catcher;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
-import com.kakao.auth.ISessionCallback;
 import com.kakao.auth.Session;
 import com.kakao.usermgmt.LoginButton;
-import com.kakao.util.exception.KakaoException;
-import com.kakao.util.helper.log.Logger;
+import com.kakao.usermgmt.UserManagement;
+import com.kakao.usermgmt.callback.LogoutResponseCallback;
 
 public class AccountFragment extends Fragment {
     private SessionCallback callback;
@@ -44,6 +45,19 @@ public class AccountFragment extends Fragment {
 
         callback = new SessionCallback();
         Session.getCurrentSession().addCallback(callback);
+
+        Button logoutButton = view.findViewById(R.id.btn_logout);
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UserManagement.getInstance().requestLogout(new LogoutResponseCallback() {
+                    @Override
+                    public void onCompleteLogout() {
+                        Toast.makeText(getContext(), "logout!!!", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
         return view;
     }
 
@@ -51,22 +65,5 @@ public class AccountFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         Session.getCurrentSession().removeCallback(callback);
-    }
-
-    private class SessionCallback implements ISessionCallback {
-
-        @Override
-        public void onSessionOpened() {
-//            final Intent intent = new Intent(getActivity(), SampleSignupActivity.class);
-//            startActivity(intent);
-            Log.d("SessionCallback", "성공!");
-        }
-
-        @Override
-        public void onSessionOpenFailed(KakaoException exception) {
-            if(exception != null) {
-                Logger.e(exception);
-            }
-        }
     }
 }
