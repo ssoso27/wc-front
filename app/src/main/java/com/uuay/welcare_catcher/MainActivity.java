@@ -36,9 +36,11 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.menu_setting :
                     fg = new SettingFragment();
                     break;
+
                 case R.id.menu_welfare :
-                    fg = new SettingFragment();
+                    fg = new WelfareListFragment();
                     break;
+
                 default:
                     break;
             }
@@ -65,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.menu_account).setOnClickListener(tvOnClickListener);
         findViewById(R.id.menu_facility).setOnClickListener(tvOnClickListener);
         findViewById(R.id.menu_setting).setOnClickListener(tvOnClickListener);
+        findViewById(R.id.menu_welfare).setOnClickListener(tvOnClickListener);
     }
 
     private void setToolbar() {
