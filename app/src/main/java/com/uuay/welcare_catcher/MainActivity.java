@@ -36,7 +36,9 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.menu_setting :
                     fg = new SettingFragment();
                     break;
-
+                case R.id.menu_welfare :
+                    fg = new SettingFragment();
+                    break;
                 default:
                     break;
             }
