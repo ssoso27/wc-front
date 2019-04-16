@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.uuay.welcare_catcher.WelfareList"
+    tools:showIn="@layout/welfare_list">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="30dp"
+        android:paddingBottom="30dp"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp">
+
+        <Button
+            android:id="@+id/btn1"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@color/guillotine_background_point"
+            android:text="전체"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true" />
+
+        <Button
+            android:id="@+id/btn2"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@color/guillotine_background_point"
+            android:text="생활"
+            android:layout_marginLeft="22dp"
+            android:layout_toRightOf="@+id/btn1"
+            android:layout_alignParentTop="true" />
+
+        <Button
+            android:id="@+id/btn3"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@color/guillotine_background_point"
+            android:text="교육"
+            android:layout_marginLeft="22dp"
+            android:layout_toRightOf="@+id/btn2"
+            android:layout_alignParentTop="true" />
+
+        <Button
+            android:id="@+id/btn4"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@color/guillotine_background_point"
+            android:text="민간"
+            android:layout_marginLeft="22dp"
+            android:layout_toRightOf="@+id/btn3"
+            android:layout_alignParentTop="true" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="200dp"
+        android:paddingBottom="30dp"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp">
+
+        <TextView
+            android:id="@+id/textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="총 00건"
+            android:layout_alignParentTop="true" />
+
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="395dp"
+            android:layout_height="441dp"
+            android:layout_marginTop="30dp"/>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
