@@ -55,7 +55,6 @@ public class WelfareList extends Fragment {
         btn3.setOnClickListener(btnOnClick);
         btn4 = (Button) view.findViewById(R.id.btn4);
         btn4.setOnClickListener(btnOnClick);
-
         return view;
     }
     AdapterView.OnItemClickListener listViewClickListener = new AdapterView.OnItemClickListener() {
