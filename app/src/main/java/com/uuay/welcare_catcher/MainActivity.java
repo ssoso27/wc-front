@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
 
                 case R.id.menu_account :
-                    fg = new AccountFragment();
+                    fg = new AccountFragmentInfo();
                     break;
 
                 case R.id.menu_setting :
