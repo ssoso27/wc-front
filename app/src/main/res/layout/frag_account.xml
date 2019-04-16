@@ -29,9 +29,9 @@
         android:id="@+id/btn_logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="36dp"
-        android:text="로그아웃"
+        android:layout_marginStart="288dp"
+        android:layout_marginTop="248dp"
+        android:text="회원탈퇴"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 </android.support.constraint.ConstraintLayout>

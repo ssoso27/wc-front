@@ -26,7 +26,7 @@ public class KakaoSDKAdapter extends KakaoAdapter {
 
             @Override
             public AuthType[] getAuthTypes() {
-                return new AuthType[]{AuthType.KAKAO_TALK};
+                return new AuthType[]{AuthType.KAKAO_LOGIN_ALL};
             }
 
             @Override

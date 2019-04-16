@@ -1,19 +1,22 @@
 package com.uuay.welcare_catcher;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.kakao.auth.Session;
+import com.kakao.network.ErrorResult;
 import com.kakao.usermgmt.LoginButton;
 import com.kakao.usermgmt.UserManagement;
-import com.kakao.usermgmt.callback.LogoutResponseCallback;
+import com.kakao.usermgmt.callback.UnLinkResponseCallback;
+import com.kakao.util.helper.log.Logger;
 
 public class AccountFragment extends Fragment {
     private SessionCallback callback;
@@ -50,12 +53,7 @@ public class AccountFragment extends Fragment {
         logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UserManagement.getInstance().requestLogout(new LogoutResponseCallback() {
-                    @Override
-                    public void onCompleteLogout() {
-                        Toast.makeText(getContext(), "logout!!!", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                onClickUnlink();
             }
         });
         return view;
@@ -65,5 +63,47 @@ public class AccountFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         Session.getCurrentSession().removeCallback(callback);
+    }
+
+    private void onClickUnlink() {
+        final String appendMessage = getString(R.string.com_kakao_confirm_unlink);
+        new AlertDialog.Builder(getContext())
+                .setMessage(appendMessage)
+                .setPositiveButton(getString(R.string.com_kakao_ok_button),
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                UserManagement.getInstance().requestUnlink(new UnLinkResponseCallback() {
+                                    @Override
+                                    public void onFailure(ErrorResult errorResult) {
+                                        Logger.e(errorResult.toString());
+                                    }
+
+                                    @Override
+                                    public void onSessionClosed(ErrorResult errorResult) {
+                                        Log.e("sing out", "session close");
+                                    }
+
+                                    @Override
+                                    public void onNotSignedUp() {
+                                        Log.e("sing out", "not singedUp");
+                                    }
+
+                                    @Override
+                                    public void onSuccess(Long userId) {
+                                        Log.e("sign out", "success");
+                                    }
+                                });
+                                dialog.dismiss();
+                            }
+                        })
+                .setNegativeButton(getString(R.string.com_kakao_cancel_button),
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        }).show();
+
     }
 }
