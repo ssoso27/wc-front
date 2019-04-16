@@ -38,6 +38,7 @@ public class SessionCallback implements ISessionCallback {
                         , result.getKakaoAccount().getEmail()
                         , "60"
                         , "5");
+                GlobalApplication.setCurrentAccount(account);
                 apiRequester.join(account);
             }
 
