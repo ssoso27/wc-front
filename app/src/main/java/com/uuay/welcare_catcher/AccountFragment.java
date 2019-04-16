@@ -49,13 +49,6 @@ public class AccountFragment extends Fragment {
         callback = new SessionCallback();
         Session.getCurrentSession().addCallback(callback);
 
-        Button logoutButton = view.findViewById(R.id.btn_logout);
-        logoutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onClickUnlink();
-            }
-        });
         return view;
     }
 
