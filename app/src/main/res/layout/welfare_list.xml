@@ -70,15 +70,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingTop="200dp"
-        android:paddingBottom="30dp"
-        android:paddingLeft="30dp"
-        android:paddingRight="30dp">
+        android:paddingBottom="8dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp">
 
         <TextView
             android:id="@+id/textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="총 00건"
+            android:text="@+id/textview"
             android:layout_alignParentTop="true" />
 
         <ListView
