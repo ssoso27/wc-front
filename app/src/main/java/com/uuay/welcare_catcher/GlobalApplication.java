@@ -5,6 +5,8 @@ import android.content.Context;
 import android.graphics.Typeface;
 
 import com.kakao.auth.KakaoSDK;
+import com.uuay.welcare_catcher.util.kakao.KakaoSDKAdapter;
+import com.uuay.welcare_catcher.model.Account;
 
 public class GlobalApplication extends Application {
     private static volatile GlobalApplication instance = null;

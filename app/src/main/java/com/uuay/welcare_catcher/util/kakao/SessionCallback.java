@@ -1,4 +1,4 @@
-package com.uuay.welcare_catcher;
+package com.uuay.welcare_catcher.util.kakao;
 
 import android.util.Log;
 
@@ -8,6 +8,9 @@ import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.MeV2ResponseCallback;
 import com.kakao.usermgmt.response.MeV2Response;
 import com.kakao.util.exception.KakaoException;
+import com.uuay.welcare_catcher.util.api.APIRequester;
+import com.uuay.welcare_catcher.model.Account;
+import com.uuay.welcare_catcher.GlobalApplication;
 
 public class SessionCallback implements ISessionCallback {
     // 로그인에 성공한 상태

@@ -1,10 +1,9 @@
-package com.uuay.welcare_catcher;
+package com.uuay.welcare_catcher.view;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +11,9 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.kakao.auth.Session;
+import com.uuay.welcare_catcher.GlobalApplication;
+import com.uuay.welcare_catcher.R;
+import com.uuay.welcare_catcher.model.Account;
 
 import java.io.IOException;
 import java.io.InputStream;

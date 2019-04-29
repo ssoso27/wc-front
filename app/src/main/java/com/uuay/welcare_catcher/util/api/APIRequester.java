@@ -1,6 +1,8 @@
-package com.uuay.welcare_catcher;
+package com.uuay.welcare_catcher.util.api;
 
 import android.util.Log;
+
+import com.uuay.welcare_catcher.model.Account;
 
 import retrofit2.Call;
 import retrofit2.Callback;
