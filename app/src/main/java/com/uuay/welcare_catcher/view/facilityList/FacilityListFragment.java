@@ -13,6 +13,8 @@ import com.uuay.welcare_catcher.R;
 
 import net.daum.mf.map.api.MapView;
 
+import static net.daum.mf.map.api.MapView.CurrentLocationTrackingMode.*;
+
 
 public class FacilityListFragment extends Fragment {
 
@@ -56,6 +58,7 @@ public class FacilityListFragment extends Fragment {
 
         ViewGroup mapViewContainer = (ViewGroup) view.findViewById(R.id.kakao_map);
         mapViewContainer.addView(mapView);
+        mapView.setCurrentLocationTrackingMode(TrackingModeOnWithoutHeadingWithoutMapMoving);
 
         changeView(0);
 
