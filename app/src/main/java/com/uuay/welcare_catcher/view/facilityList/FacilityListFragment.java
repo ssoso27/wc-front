@@ -1,5 +1,7 @@
 package com.uuay.welcare_catcher.view.facilityList;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -11,13 +13,24 @@ import android.widget.TextView;
 
 import com.uuay.welcare_catcher.R;
 
+import net.daum.mf.map.api.MapView;
+
 
 public class FacilityListFragment extends Fragment {
 
     private View view;
+    private Activity activity;
 
     public FacilityListFragment() {
 
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        if (context instanceof Activity)
+            activity = (Activity) context;
     }
 
     @Override
@@ -41,13 +54,18 @@ public class FacilityListFragment extends Fragment {
             }
         });
 
+        MapView mapView = new MapView(activity);
+
+        ViewGroup mapViewContainer = (ViewGroup) view.findViewById(R.id.kakao_map);
+        mapViewContainer.addView(mapView);
+
         changeView(0);
 
         return view;
     }
 
     private void changeView(int index) {
-        View mapView = view.findViewById(R.id.testTextview);
+        View mapView = view.findViewById(R.id.kakao_map);
         View listView = view.findViewById(R.id.lv_facilities);
 
         switch (index) {
