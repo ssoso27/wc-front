@@ -46,6 +46,43 @@ android:orientation="vertical">
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
+        <FrameLayout
+            android:id="@+id/frame_map_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/btn_fixed_direction"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="340dp"
+                android:layout_marginTop="520dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/ic_fixed_direction" />
+            <Button
+                android:id="@+id/btn_current_direction"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="340dp"
+                android:layout_marginTop="520dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/ic_current_direction" />
+            <Button
+                android:id="@+id/btn_stop_location"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="340dp"
+                android:layout_marginTop="520dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/ic_stop_location" />
+        </FrameLayout>
+
         <ListView
             android:id="@+id/lv_facilities"
             android:layout_width="match_parent"
