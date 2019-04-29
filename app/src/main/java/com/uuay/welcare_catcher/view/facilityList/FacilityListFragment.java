@@ -25,10 +25,12 @@ public class FacilityListFragment extends Fragment {
     private Button btnFixed;
     private Button btnCurrent;
     private Button btnStop;
+    private MapView mapView;
 
     class BtnOnClickListener implements Button.OnClickListener {
         @Override
         public void onClick(View v) {
+            PermissionChecker permissionChecker = new PermissionChecker(activity);
 
             switch (v.getId()) {
                 case R.id.btn_show_map :
@@ -40,15 +42,30 @@ public class FacilityListFragment extends Fragment {
                     break;
 
                 case R.id.btn_fixed_direction:
-                    changeButton(ToCurrentLocation);
+                    if (permissionChecker.isPermit()) {
+                        mapView.setCurrentLocationTrackingMode(TrackingModeOnWithHeading);
+                        changeButton(ToCurrentLocation);
+                    } else {
+                        permissionChecker.permissionCheck();
+                    }
                     break;
 
                 case R.id.btn_current_direction:
-                    changeButton(ToStopLocation);
+                    if (permissionChecker.isPermit()) {
+                        mapView.setCurrentLocationTrackingMode(TrackingModeOff);
+                        changeButton(ToStopLocation);
+                    } else {
+                        permissionChecker.permissionCheck();
+                    }
                     break;
 
                 case R.id.btn_stop_location:
-                    changeButton(ToFixtedDirection);
+                    if (permissionChecker.isPermit()) {
+                        mapView.setCurrentLocationTrackingMode(TrackingModeOnWithoutHeading);
+                        changeButton(ToFixtedDirection);
+                    } else {
+                        permissionChecker.permissionCheck();
+                    }
                     break;
 
                 default:
@@ -77,7 +94,7 @@ public class FacilityListFragment extends Fragment {
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.frag_facility_list, container, false);
 
-        MapView mapView = new MapView(activity);
+        mapView = new MapView(activity);
 
         ViewGroup mapViewContainer = (ViewGroup) view.findViewById(R.id.kakao_map);
         mapViewContainer.addView(mapView);
