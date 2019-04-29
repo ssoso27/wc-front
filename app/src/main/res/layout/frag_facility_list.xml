@@ -38,7 +38,8 @@ android:orientation="vertical">
     <FrameLayout
         android:id="@+id/frame_facility"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="10dp">
 
         <RelativeLayout
             android:id="@+id/kakao_map"

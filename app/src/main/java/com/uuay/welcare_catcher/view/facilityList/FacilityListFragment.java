@@ -8,8 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.TextView;
 
 import com.uuay.welcare_catcher.R;
 
@@ -71,11 +69,11 @@ public class FacilityListFragment extends Fragment {
         switch (index) {
             case 0:
                 mapView.setVisibility(View.VISIBLE);
-                listView.setVisibility(View.INVISIBLE);
+                listView.setVisibility(View.GONE);
                 break;
 
             case 1:
-                mapView.setVisibility(View.INVISIBLE);
+                mapView.setVisibility(View.GONE);
                 listView.setVisibility(View.VISIBLE);
                 break;
 
