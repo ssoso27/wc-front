@@ -1,19 +1,16 @@
 package com.uuay.welcare_catcher;
 
-import android.Manifest;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 
+import com.uuay.welcare_catcher.util.PermissionChecker;
 import com.uuay.welcare_catcher.view.AccountFragmentInfo;
 import com.uuay.welcare_catcher.view.facilityList.FacilityListFragment;
 import com.uuay.welcare_catcher.view.HomeFragment;
@@ -68,13 +65,8 @@ public class MainActivity extends AppCompatActivity {
         setFragment(new HomeFragment());
         setEventListener();
 
-        int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
-
-        if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(MainActivity.this,
-                    new String[] {Manifest.permission.ACCESS_FINE_LOCATION},
-                    1);
-        }
+        PermissionChecker permissionChecker = new PermissionChecker(this);
+        permissionChecker.permissionCheck();
     }
 
     private void setEventListener() {

@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.uuay.welcare_catcher.util.PermissionChecker;
 import com.uuay.welcare_catcher.R;
 
 import net.daum.mf.map.api.MapView;
@@ -58,7 +59,11 @@ public class FacilityListFragment extends Fragment {
 
         ViewGroup mapViewContainer = (ViewGroup) view.findViewById(R.id.kakao_map);
         mapViewContainer.addView(mapView);
-        mapView.setCurrentLocationTrackingMode(TrackingModeOnWithoutHeadingWithoutMapMoving);
+
+        PermissionChecker permissionChecker = new PermissionChecker(activity);
+        if (permissionChecker.isPermit()) {
+            mapView.setCurrentLocationTrackingMode(TrackingModeOnWithHeading);
+        }
 
         changeView(0);
 
