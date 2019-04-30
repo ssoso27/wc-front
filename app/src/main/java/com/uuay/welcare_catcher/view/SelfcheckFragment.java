@@ -35,7 +35,7 @@ public class SelfcheckFragment extends Fragment {
         Button thirdBtn2 = (Button) view.findViewById(R.id.third_btn2);
         Button thirdBtn3 = (Button) view.findViewById(R.id.third_btn3);
 
-        firstTextView.setText("1. 문항");
+        firstTextView.setText("1. 문항 ");
         firstBtn1.setText("선택문항");
         firstBtn2.setText("선택문항");
         firstBtn3.setText("선택문항");
