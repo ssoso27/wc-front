@@ -44,12 +44,19 @@ public class AccountFragmentInfo extends Fragment {
         ImageButton imagebtn = (ImageButton) view.findViewById(R.id.imageButton);
         final Bitmap[] bitmap = new Bitmap[1];
 
-        textView1.setText(current.getNickname());
+        textView1.setText("닉네임");
         textView2.setText("장애유형 장애등급");
-        textView3.setText(current.getEmail());
+        textView3.setText("이메일");
         textView4.setText("받는 중인 혜택");
         textView5.setText("받는 중인 혜택 중 하나 외 N개");
 
+        if (current != null) {
+            bringProfileImg(current, imageView, bitmap);
+        }
+        return view;
+    }
+
+    private void bringProfileImg(final Account current, ImageView imageView, final Bitmap[] bitmap) {
         Thread mThread = new Thread() {
 
             @Override
@@ -91,6 +98,5 @@ public class AccountFragmentInfo extends Fragment {
         } catch (InterruptedException e) {
 
         }
-        return view;
     }
 }
