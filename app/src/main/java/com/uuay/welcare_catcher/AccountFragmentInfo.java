@@ -31,11 +31,18 @@ public class AccountFragmentInfo extends Fragment {
         ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
         ImageButton imagebtn = (ImageButton) view.findViewById(R.id.imageButton);
 
-        textView1.setText("사용자 이름");
-        textView2.setText("장애유형 장애등급");
-        textView3.setText("거주지역");
+        // 카카오 api
+        String nickname = "가붕이";   //닉네임
+        String mail_address = "메일주소는 여기";   // 메일주소
+        String dis_type = "유형";   // 장애유형
+        String dis_rate = "등급";   // 장애등급
+
+        textView1.setText(nickname);
+        textView2.setText(dis_type + " " + dis_rate);
+        textView3.setText(mail_address);
         textView4.setText("받는 중인 혜택");
         textView5.setText("받는 중인 혜택 중 하나 외 N개");
+
         return view;
     }
 }
