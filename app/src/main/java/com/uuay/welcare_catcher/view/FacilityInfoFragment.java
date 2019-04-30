@@ -1,4 +1,4 @@
-package com.uuay.welcare_catcher;
+package com.uuay.welcare_catcher.view;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,8 +8,8 @@ import android.view.ViewGroup;
 
 import com.uuay.welcare_catcher.R;
 
-public class SettingFragment extends Fragment {
-    public SettingFragment() {
+public class FacilityInfoFragment extends Fragment {
+    public FacilityInfoFragment() {
 
     }
 
@@ -17,6 +17,6 @@ public class SettingFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.frag_setting, container, false);
+        return inflater.inflate(R.layout.frag_facility_info, container, false);
     }
 }

@@ -1,16 +1,16 @@
-package com.uuay.welcare_catcher;
+package com.uuay.welcare_catcher.view;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.kakao.auth.Session;
 import com.kakao.usermgmt.LoginButton;
+import com.uuay.welcare_catcher.R;
+import com.uuay.welcare_catcher.util.kakao.SessionCallback;
 
 public class AccountFragment extends Fragment {
     private SessionCallback callback;

@@ -1,4 +1,4 @@
-package com.uuay.welcare_catcher;
+package com.uuay.welcare_catcher.model;
 
 import lombok.Data;
 

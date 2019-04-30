@@ -1,4 +1,4 @@
-package com.uuay.welcare_catcher;
+package com.uuay.welcare_catcher.view;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

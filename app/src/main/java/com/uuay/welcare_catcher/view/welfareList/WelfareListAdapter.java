@@ -1,4 +1,4 @@
-package com.uuay.welcare_catcher;
+package com.uuay.welcare_catcher.view.welfareList;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,6 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
+
+import com.uuay.welcare_catcher.R;
 
 import java.util.ArrayList;
 

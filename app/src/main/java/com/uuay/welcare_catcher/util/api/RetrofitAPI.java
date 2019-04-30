@@ -1,10 +1,10 @@
-package com.uuay.welcare_catcher;
+package com.uuay.welcare_catcher.util.api;
+
+import com.uuay.welcare_catcher.model.Account;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
-import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.Headers;
-import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 
 public interface RetrofitAPI {

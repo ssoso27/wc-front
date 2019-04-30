@@ -1,21 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
-android:layout_height="match_parent">
-
-<TextView
-    android:id="@+id/textView3"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Facility info"
-    tools:layout_editor_absoluteX="186dp"
-    tools:layout_editor_absoluteY="404dp" />
-
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+android:layout_height="match_parent"
+android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/btnline"
@@ -23,7 +11,7 @@ android:layout_height="match_parent">
         android:layout_height="wrap_content">
 
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/btn_show_map"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -32,7 +20,7 @@ android:layout_height="match_parent">
             android:text="지도 보기" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/btn_show_list"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -43,24 +31,62 @@ android:layout_height="match_parent">
 
     <EditText
         android:id="@+id/edittext"
-        android:text="검색"
         android:layout_width="match_parent"
-        android:layout_height="50dp" />
+        android:layout_height="50dp"
+        android:text="검색" />
 
     <FrameLayout
+        android:id="@+id/frame_facility"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="10dp">
 
-        <ImageView
+        <RelativeLayout
+            android:id="@+id/kakao_map"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
+        <FrameLayout
+            android:id="@+id/frame_map_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/btn_fixed_direction"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="340dp"
+                android:layout_marginTop="520dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/ic_fixed_direction" />
+            <Button
+                android:id="@+id/btn_current_direction"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="340dp"
+                android:layout_marginTop="520dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/ic_current_direction" />
+            <Button
+                android:id="@+id/btn_stop_location"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="340dp"
+                android:layout_marginTop="520dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/ic_stop_location" />
+        </FrameLayout>
+
         <ListView
-            android:id="@+id/listview"
+            android:id="@+id/lv_facilities"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </FrameLayout>
 
 </LinearLayout>
-
-</FrameLayout>
