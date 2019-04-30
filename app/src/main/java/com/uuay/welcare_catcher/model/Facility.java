@@ -4,7 +4,7 @@ public class Facility {
     private String name;
     private String type;
     private String address;
-    private String tel;
+    private String tel_number;
     private String url;
 
     public String getName() {
@@ -31,12 +31,12 @@ public class Facility {
         this.address = address;
     }
 
-    public String getTel() {
-        return tel;
+    public String getTelNumber() {
+        return tel_number;
     }
 
-    public void setTel(String tel) {
-        this.tel = tel;
+    public void setTelNumber(String tel_number) {
+        this.tel_number = tel_number;
     }
 
     public String getUrl() {

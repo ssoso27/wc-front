@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +19,7 @@ import com.uuay.welcare_catcher.util.api.APIRequester;
 
 import net.daum.mf.map.api.MapView;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import static com.uuay.welcare_catcher.view.facilityList.MapButtonStatus.ToCurrentLocation;
 import static com.uuay.welcare_catcher.view.facilityList.MapButtonStatus.ToFixtedDirection;
@@ -36,6 +37,7 @@ public class FacilityListFragment extends Fragment {
     private Button btnStop;
     private MapView mapView;
     private ListView listView;
+    private APIRequester apiRequester;
 
     class BtnOnClickListener implements Button.OnClickListener {
         @Override
@@ -104,6 +106,9 @@ public class FacilityListFragment extends Fragment {
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.frag_facility_list, container, false);
 
+        apiRequester = new APIRequester();
+        apiRequester.findFacilities("%", 10, 1);
+
         mapView = new MapView(activity);
 
         ViewGroup mapViewContainer = (ViewGroup) view.findViewById(R.id.kakao_map);
@@ -119,7 +124,6 @@ public class FacilityListFragment extends Fragment {
         frameBtn.addView(btnFixed);
         changeView(0);
         setEventListener();
-        listViewDataAdd();
 
         return view;
     }
@@ -157,6 +161,7 @@ public class FacilityListFragment extends Fragment {
                 break;
 
             case 1:
+                listViewDataAdd();
                 mapView.setVisibility(View.GONE);
                 frameBtn.setVisibility(View.GONE);
                 listView.setVisibility(View.VISIBLE);
@@ -191,9 +196,18 @@ public class FacilityListFragment extends Fragment {
 
     public void listViewDataAdd() {
         FacilityListAdapter adapter = new FacilityListAdapter();
-        APIRequester apiRequester = new APIRequester();
-        apiRequester.findFacilities("%", 10, 1);
-        adapter.addItem("", "", "", "");
+        List<Facility> list = apiRequester.getFacilities();
+
+        if (list != null) {
+            for (int i = 0; i < list.size(); i++) {
+                Facility facility = list.get(i);
+                adapter.addItem(
+                        facility.getName(),
+                        facility.getType().equals("resident") ? "공공기관" : "복지시설",
+                        facility.getAddress(),
+                        facility.getTelNumber());
+            }
+        }
 
         // set adapter on listView
         listView.setAdapter(adapter);

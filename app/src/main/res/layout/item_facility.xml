@@ -25,7 +25,6 @@
                 android:gravity="center_vertical"
                 android:paddingLeft="10dp"
                 android:text="이름"
-                android:textColor="#33aabb"
                 android:textStyle="bold" />
 
             <TextView
@@ -35,7 +34,8 @@
                 android:gravity="center_vertical"
                 android:paddingLeft="10dp"
                 android:text="분류"
-                android:textColor="#33aabb"
+                android:textColor="@color/text_gray"
+                android:textSize="10sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -46,9 +46,8 @@
             android:layout_weight="1"
             android:gravity="center_vertical"
             android:paddingLeft="10dp"
-            android:text="주소"
-            android:textColor="#33aabb"
-            android:textStyle="bold" />
+            android:textSize="12sp"
+            android:text="주소" />
 
         <TextView
             android:id="@+id/tv_facility_tel"
@@ -59,7 +58,7 @@
             android:paddingLeft="10dp"
             android:text="연락처"
             android:textColor="#33aabb"
-            android:textStyle="bold" />
+            android:textSize="12sp" />
 
         <!--<TextView-->
             <!--android:id="@+id/tv_facility_url"-->

@@ -19,6 +19,7 @@ public class APIRequester {
     private RetrofitAPI retrofitAPI;
     private Call<String> stringCall;
     private Call<List<Facility>> facilityListCall;
+    private ArrayList<Facility> facilities;
 
     public APIRequester() {
         this.setRetrofit();
@@ -60,7 +61,7 @@ public class APIRequester {
             if(response.isSuccessful()) {
                 ArrayList<Facility> list = (ArrayList<Facility>) response.body();
                 if (list != null) {
-                    Log.d("onResponse", list.get(0).getAddress());
+                    facilities = list;
                 }
             }
         }
@@ -79,5 +80,9 @@ public class APIRequester {
                 .build();
 
         retrofitAPI = retrofit.create(RetrofitAPI.class);
+    }
+
+    public ArrayList<Facility> getFacilities() {
+        return facilities;
     }
 }

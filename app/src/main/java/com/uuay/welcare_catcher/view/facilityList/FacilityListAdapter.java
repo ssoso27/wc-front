@@ -56,7 +56,7 @@ public class FacilityListAdapter extends BaseAdapter {
         tvName.setText(item.getName());
         tvType.setText(item.getType());
         tvAddress.setText(item.getAddress());
-        tvTel.setText(item.getTel());
+        tvTel.setText(item.getTelNumber());
 
         return convertView;
     }
@@ -66,10 +66,10 @@ public class FacilityListAdapter extends BaseAdapter {
 
         Facility item = new Facility();
 
-        item.setName("강원도청");
-        item.setType("공공기관");
-        item.setAddress("전라북도 전주시 완산구 효자로 225 (효자동3가)");
-        item.setTel("063-280-2114");
+        item.setName(name);
+        item.setType(type);
+        item.setAddress(address);
+        item.setTelNumber(tel);
 
         /* 데이터그릇 mItem에 담음 */
         items.add(item);
