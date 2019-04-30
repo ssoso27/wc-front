@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ListView;
 
 import com.uuay.welcare_catcher.util.PermissionChecker;
 import com.uuay.welcare_catcher.R;
@@ -26,6 +27,7 @@ public class FacilityListFragment extends Fragment {
     private Button btnCurrent;
     private Button btnStop;
     private MapView mapView;
+    private ListView listView;
 
     class BtnOnClickListener implements Button.OnClickListener {
         @Override
@@ -109,6 +111,7 @@ public class FacilityListFragment extends Fragment {
         frameBtn.addView(btnFixed);
         changeView(0);
         setEventListener();
+        listViewDataAdd();
 
         return view;
     }
@@ -119,6 +122,8 @@ public class FacilityListFragment extends Fragment {
         btnFixed = view.findViewById(R.id.btn_fixed_direction);
         btnCurrent = view.findViewById(R.id.btn_current_direction);
         btnStop = view.findViewById(R.id.btn_stop_location);
+
+        listView = view.findViewById(R.id.lv_facilities);
     }
 
     private void setEventListener() {
@@ -174,5 +179,14 @@ public class FacilityListFragment extends Fragment {
             default:
                 break;
         }
+    }
+
+    public void listViewDataAdd() {
+        FacilityListAdapter adapter = new FacilityListAdapter();
+        adapter.addItem("", "", "", "");
+
+        // set adapter on listView
+        listView.setAdapter(adapter);
+
     }
 }
