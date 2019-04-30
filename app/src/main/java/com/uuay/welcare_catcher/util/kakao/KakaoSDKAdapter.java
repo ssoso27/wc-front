@@ -1,4 +1,4 @@
-package com.uuay.welcare_catcher;
+package com.uuay.welcare_catcher.util.kakao;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
@@ -8,6 +8,7 @@ import com.kakao.auth.AuthType;
 import com.kakao.auth.IApplicationConfig;
 import com.kakao.auth.ISessionConfig;
 import com.kakao.auth.KakaoAdapter;
+import com.uuay.welcare_catcher.GlobalApplication;
 
 public class KakaoSDKAdapter extends KakaoAdapter {
     @Override
@@ -26,7 +27,7 @@ public class KakaoSDKAdapter extends KakaoAdapter {
 
             @Override
             public AuthType[] getAuthTypes() {
-                return new AuthType[]{AuthType.KAKAO_TALK};
+                return new AuthType[]{AuthType.KAKAO_LOGIN_ALL};
             }
 
             @Override

@@ -10,6 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 
+import com.uuay.welcare_catcher.util.PermissionChecker;
+import com.uuay.welcare_catcher.view.AccountFragmentInfo;
+import com.uuay.welcare_catcher.view.facilityList.FacilityListFragment;
+import com.uuay.welcare_catcher.view.HomeFragment;
+import com.uuay.welcare_catcher.view.SettingFragment;
+import com.uuay.welcare_catcher.view.welfareList.WelfareListFragment;
 import com.yalantis.guillotine.animation.GuillotineAnimation;
 
 public class MainActivity extends AppCompatActivity {
@@ -37,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
 
                 case R.id.menu_welfare :
-                    fg = new WelfareList();
+                    fg = new WelfareListFragment();
                     break;
 
                 default:
@@ -53,10 +59,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
         setToolbar();
         setFragment(new HomeFragment());
         setEventListener();
+
+        PermissionChecker permissionChecker = new PermissionChecker(this);
+        permissionChecker.permissionCheck();
     }
 
     private void setEventListener() {

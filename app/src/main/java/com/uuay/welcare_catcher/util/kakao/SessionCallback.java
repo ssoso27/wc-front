@@ -1,4 +1,4 @@
-package com.uuay.welcare_catcher;
+package com.uuay.welcare_catcher.util.kakao;
 
 import android.util.Log;
 
@@ -8,8 +8,9 @@ import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.MeV2ResponseCallback;
 import com.kakao.usermgmt.response.MeV2Response;
 import com.kakao.util.exception.KakaoException;
-
-import java.util.Objects;
+import com.uuay.welcare_catcher.util.api.APIRequester;
+import com.uuay.welcare_catcher.model.Account;
+import com.uuay.welcare_catcher.GlobalApplication;
 
 public class SessionCallback implements ISessionCallback {
     // 로그인에 성공한 상태
@@ -32,16 +33,16 @@ public class SessionCallback implements ISessionCallback {
             // 사용자정보 요청에 성공한 경우,
             @Override
             public void onSuccess(MeV2Response result) {
+                APIRequester apiRequester = new APIRequester();
                 Log.e("SessionCallback::", "onSuccess");
 
-                Log.e("nickname : ", result.getNickname());
-//                Log.e("email : ", result.getKakaoAccount().getEmail());
-//                Log.e("BirthYear : ", result.getKakaoAccount().getBirthyear());
-//                Log.e("phoneNumber : ", result.getKakaoAccount().getPhoneNumber());
-//                Log.e("gender : ", Objects.requireNonNull(result.getKakaoAccount().getGender()).getValue());
-//                Log.e("AgeRange : ", String.valueOf(result.getKakaoAccount().getAgeRange()));
-                Log.e("profileImagePath : ", result.getProfileImagePath());
-                Log.e("id : ", String.valueOf(result.getId()));
+                Account account = new Account(result.getNickname()
+                        , result.getProfileImagePath()
+                        , result.getKakaoAccount().getEmail()
+                        , "60"
+                        , "5");
+                GlobalApplication.setCurrentAccount(account);
+                apiRequester.join(account);
             }
 
             // 세션 오픈 실패. 세션이 삭제된 경우,

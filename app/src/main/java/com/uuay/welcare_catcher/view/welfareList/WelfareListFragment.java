@@ -1,4 +1,4 @@
-package com.uuay.welcare_catcher;
+package com.uuay.welcare_catcher.view.welfareList;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,9 +11,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class WelfareList extends Fragment {
+import com.uuay.welcare_catcher.R;
+import com.uuay.welcare_catcher.view.welfareList.WelfareListAdapter;
 
-    public WelfareList() {
+public class WelfareListFragment extends Fragment {
+
+    public WelfareListFragment() {
 
     }
 
@@ -27,7 +30,7 @@ public class WelfareList extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        View view = inflater.inflate(R.layout.welfare_list, null) ;
+        View view = inflater.inflate(R.layout.frag_welfare_list, null) ;
 
         WelfareListAdapter adapter = new WelfareListAdapter();
 
@@ -55,7 +58,6 @@ public class WelfareList extends Fragment {
         btn3.setOnClickListener(btnOnClick);
         btn4 = (Button) view.findViewById(R.id.btn4);
         btn4.setOnClickListener(btnOnClick);
-
         return view;
     }
     AdapterView.OnItemClickListener listViewClickListener = new AdapterView.OnItemClickListener() {
