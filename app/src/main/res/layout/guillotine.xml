@@ -80,6 +80,6 @@
 
         <com.uuay.welcare_catcher.CanaroTextView
             style="@style/TextView.GuillotineItem"
-            android:text="복지 서비스" />
+            android:text="@string/welfare" />
     </LinearLayout>
 </LinearLayout>

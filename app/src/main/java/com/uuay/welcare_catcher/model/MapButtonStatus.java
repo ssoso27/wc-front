@@ -1,4 +1,4 @@
-package com.uuay.welcare_catcher.view.facilityList;
+package com.uuay.welcare_catcher.model;
 
 public enum MapButtonStatus {
     ToCurrentLocation(0),
