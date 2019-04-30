@@ -11,13 +11,21 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 
-import com.uuay.welcare_catcher.util.PermissionChecker;
 import com.uuay.welcare_catcher.R;
+import com.uuay.welcare_catcher.model.Facility;
+import com.uuay.welcare_catcher.util.PermissionChecker;
+import com.uuay.welcare_catcher.util.api.APIRequester;
 
 import net.daum.mf.map.api.MapView;
 
-import static com.uuay.welcare_catcher.view.facilityList.MapButtonStatus.*;
-import static net.daum.mf.map.api.MapView.CurrentLocationTrackingMode.*;
+import java.util.ArrayList;
+
+import static com.uuay.welcare_catcher.view.facilityList.MapButtonStatus.ToCurrentLocation;
+import static com.uuay.welcare_catcher.view.facilityList.MapButtonStatus.ToFixtedDirection;
+import static com.uuay.welcare_catcher.view.facilityList.MapButtonStatus.ToStopLocation;
+import static net.daum.mf.map.api.MapView.CurrentLocationTrackingMode.TrackingModeOff;
+import static net.daum.mf.map.api.MapView.CurrentLocationTrackingMode.TrackingModeOnWithHeading;
+import static net.daum.mf.map.api.MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading;
 
 
 public class FacilityListFragment extends Fragment {
@@ -183,6 +191,8 @@ public class FacilityListFragment extends Fragment {
 
     public void listViewDataAdd() {
         FacilityListAdapter adapter = new FacilityListAdapter();
+        APIRequester apiRequester = new APIRequester();
+        apiRequester.findFacilities("%", 10, 1);
         adapter.addItem("", "", "", "");
 
         // set adapter on listView

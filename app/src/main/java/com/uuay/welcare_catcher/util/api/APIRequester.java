@@ -3,6 +3,10 @@ package com.uuay.welcare_catcher.util.api;
 import android.util.Log;
 
 import com.uuay.welcare_catcher.model.Account;
+import com.uuay.welcare_catcher.model.Facility;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -13,18 +17,24 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class APIRequester {
     private Retrofit retrofit;
     private RetrofitAPI retrofitAPI;
-    private Call<String> call;
+    private Call<String> stringCall;
+    private Call<List<Facility>> facilityListCall;
 
     public APIRequester() {
         this.setRetrofit();
     }
 
     public void join(Account account) {
-        call = retrofitAPI.join(account);
-        call.enqueue(retrofitCallback);
+        stringCall = retrofitAPI.join(account);
+        stringCall.enqueue(stringCallback);
     }
 
-    private Callback<String> retrofitCallback = new Callback<String>() {
+    public void findFacilities(String keyword, int size, int page) {
+        facilityListCall = retrofitAPI.findFacilities(keyword, size, page);
+        facilityListCall.enqueue(facilityListCallback);
+    }
+
+    private Callback<String> stringCallback = new Callback<String>() {
 
         @Override
         public void onResponse(Call<String> call, Response<String> response) {
@@ -35,6 +45,28 @@ public class APIRequester {
 
         @Override
         public void onFailure(Call<String> call, Throwable t) {
+            Log.d("onFailure", "으나야사랑해ㅜ");
+            t.printStackTrace();
+        }
+    };
+
+    private Callback<List<Facility>> facilityListCallback = new Callback<List<Facility>>() {
+
+        @Override
+        public void onResponse(Call<List<Facility>> call, Response<List<Facility>> response) {
+            int code = response.code();
+            Log.d("onResponse", String.valueOf(code));
+
+            if(response.isSuccessful()) {
+                ArrayList<Facility> list = (ArrayList<Facility>) response.body();
+                if (list != null) {
+                    Log.d("onResponse", list.get(0).getAddress());
+                }
+            }
+        }
+
+        @Override
+        public void onFailure(Call<List<Facility>> call, Throwable t) {
             Log.d("onFailure", "으나야사랑해ㅜ");
             t.printStackTrace();
         }
