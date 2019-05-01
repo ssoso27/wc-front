@@ -1,44 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/root"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/guillotine_background"
-    android:orientation="vertical">
-    <View
-        android:layout_gravity="top"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/guillotine_actionbar_background_view_height"
-        android:background="@color/guillotine_background_point"
-        />
+    android:layout_height="match_parent">
 
-    <LinearLayout
+    <FrameLayout
+        android:id="@+id/fragment_place"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_marginBottom="?attr/actionBarSize"/>
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            app:contentInsetStart="0dp"
-            style="@style/Toolbar">
-
-            <ImageView
-                android:id="@+id/content_hamburger"
-                style="@style/ImageView.Hamburger"
-                android:src="@drawable/ic_menu_90" />
-
-            <com.uuay.welcare_catcher.CanaroTextView
-                android:id="@+id/tv_toolbar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:textSize="@dimen/guillotine_item_text_size" />
-        </android.support.v7.widget.Toolbar>
-
-        <FrameLayout
-            android:id="@+id/fragment_place"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-    </LinearLayout>
-</FrameLayout>
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottom_navigation_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="?android:attr/windowBackground"
+        app:menu="@menu/menu_bottom"/>
+</android.support.design.widget.CoordinatorLayout>

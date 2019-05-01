@@ -34,4 +34,5 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok:1.18.6'
     implementation files('libs/libDaumMapEngineApi.jar')
     implementation files('libs/libDaumMapAndroid.jar')
+    implementation 'com.android.support:design:28.0.0'
 }
