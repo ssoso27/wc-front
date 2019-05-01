@@ -9,11 +9,9 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.uuay.welcare_catcher.util.PermissionChecker;
-import com.uuay.welcare_catcher.view.AccountFragment;
 import com.uuay.welcare_catcher.view.AccountFragmentInfo;
 import com.uuay.welcare_catcher.view.facilityList.FacilityListFragment;
 import com.uuay.welcare_catcher.view.HomeFragment;
@@ -38,16 +36,6 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.menu_facility :
                     fg = new FacilityListFragment();
                     tb.setTitle(R.string.facility);
-                    break;
-
-                case R.id.menu_account :
-                    fg = new AccountFragmentInfo();
-                    tb.setTitle(R.string.account);
-                    break;
-
-                case R.id.menu_setting :
-                    fg = new SettingFragment();
-                    tb.setTitle(R.string.setting);
                     break;
 
                 case R.id.menu_welfare :
@@ -95,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                 tb.setTitle(R.string.account);
                 return true;
 
-            case R.id.menu_setting :
+            case R.id.menu_settings:
                 setFragment(new SettingFragment());
                 tb.setTitle(R.string.setting);
                 return true;
