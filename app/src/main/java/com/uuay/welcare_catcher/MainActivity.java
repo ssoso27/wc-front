@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.uuay.welcare_catcher.util.PermissionChecker;
@@ -17,6 +18,9 @@ import com.uuay.welcare_catcher.view.SettingFragment;
 import com.uuay.welcare_catcher.view.welfareList.WelfareListFragment;
 
 public class MainActivity extends AppCompatActivity {
+
+    private Toolbar tb;
+
     class SelectedListener implements BottomNavigationView.OnNavigationItemSelectedListener {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -25,27 +29,27 @@ public class MainActivity extends AppCompatActivity {
             switch (menuItem.getItemId()) {
                 case R.id.menu_home :
                     fg = new HomeFragment();
-//                    menuTitle = getString(R.string.home);
+                    tb.setTitle(R.string.home);
                     break;
 
                 case R.id.menu_facility :
                     fg = new FacilityListFragment();
-//                    menuTitle = getString(R.string.facility);
+                    tb.setTitle(R.string.facility);
                     break;
 
                 case R.id.menu_account :
                     fg = new AccountFragmentInfo();
-//                    menuTitle = getString(R.string.account);
+                    tb.setTitle(R.string.account);
                     break;
 
                 case R.id.menu_setting :
                     fg = new SettingFragment();
-//                    menuTitle = getString(R.string.setting);
+                    tb.setTitle(R.string.setting);
                     break;
 
                 case R.id.menu_welfare :
                     fg = new WelfareListFragment();
-//                    menuTitle = getString(R.string.welfare);
+                    tb.setTitle(R.string.welfare);
                     break;
 
                 default:
@@ -64,13 +68,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        PermissionChecker permissionChecker = new PermissionChecker(this);
+        permissionChecker.permissionCheck();
+
+        initToolbar();
+        initBottomNav();
+        setFragment(new HomeFragment());
+    }
+
+    private void initToolbar() {
+        tb = findViewById(R.id.app_toolbar);
+        setSupportActionBar(tb);
+    }
+
+    private void initBottomNav() {
         SelectedListener listener = new SelectedListener();
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation_view);
         bottomNavigationView.setOnNavigationItemSelectedListener(listener);
-        setFragment(new HomeFragment());
-
-        PermissionChecker permissionChecker = new PermissionChecker(this);
-        permissionChecker.permissionCheck();
     }
 
     public void setFragment(Fragment fragment) {
