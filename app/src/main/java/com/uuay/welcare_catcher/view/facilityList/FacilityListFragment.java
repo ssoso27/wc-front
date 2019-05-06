@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 
@@ -21,36 +22,36 @@ import net.daum.mf.map.api.MapView;
 
 import java.util.List;
 
-import static com.uuay.welcare_catcher.model.MapButtonStatus.ToCurrentLocation;
-import static com.uuay.welcare_catcher.model.MapButtonStatus.ToFixtedDirection;
-import static com.uuay.welcare_catcher.model.MapButtonStatus.ToStopLocation;
-import static net.daum.mf.map.api.MapView.CurrentLocationTrackingMode.TrackingModeOff;
-import static net.daum.mf.map.api.MapView.CurrentLocationTrackingMode.TrackingModeOnWithHeading;
-import static net.daum.mf.map.api.MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading;
-
+import static com.uuay.welcare_catcher.model.MapButtonStatus.*;
+import static com.uuay.welcare_catcher.view.facilityList.ScreenName.*;
+import static net.daum.mf.map.api.MapView.CurrentLocationTrackingMode.*;
 
 public class FacilityListFragment extends Fragment {
 
+    private Activity activity;
     private FrameLayout frameBtn;
     private Button btnFixed;
     private Button btnCurrent;
     private Button btnStop;
+
+    private View view;
     private MapView mapView;
     private ListView listView;
+    private EditText searchView;
+
     private APIRequester apiRequester;
+    private PermissionChecker permissionChecker;
 
     class BtnOnClickListener implements Button.OnClickListener {
         @Override
         public void onClick(View v) {
-            PermissionChecker permissionChecker = new PermissionChecker(activity);
-
             switch (v.getId()) {
                 case R.id.btn_show_map :
-                    changeView(0);
+                    changeScreen(KakaoMap);
                     break;
 
                 case R.id.btn_show_list:
-                    changeView(1);
+                    changeScreen(FacilityList);
                     break;
 
                 case R.id.btn_fixed_direction:
@@ -86,11 +87,8 @@ public class FacilityListFragment extends Fragment {
         }
     }
 
-    private View view;
-    private Activity activity;
-
     public FacilityListFragment() {
-
+        apiRequester = new APIRequester();
     }
 
     @Override
@@ -99,6 +97,8 @@ public class FacilityListFragment extends Fragment {
 
         if (context instanceof Activity)
             activity = (Activity) context;
+
+        permissionChecker = new PermissionChecker(activity);
     }
 
     @Override
@@ -106,26 +106,28 @@ public class FacilityListFragment extends Fragment {
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.frag_facility_list, container, false);
 
-        apiRequester = new APIRequester();
         apiRequester.findFacilities("%", 10, 1);
 
+        initViews();
+        initMap();
+        changeScreen(KakaoMap);
+        setEventListener();
+
+        return view;
+    }
+
+    private void initMap() {
         mapView = new MapView(activity);
 
         ViewGroup mapViewContainer = (ViewGroup) view.findViewById(R.id.kakao_map);
         mapViewContainer.addView(mapView);
 
-        PermissionChecker permissionChecker = new PermissionChecker(activity);
         if (permissionChecker.isPermit()) {
             mapView.setCurrentLocationTrackingMode(TrackingModeOnWithHeading);
         }
 
-        initViews();
         frameBtn.removeAllViews();
         frameBtn.addView(btnFixed);
-        changeView(0);
-        setEventListener();
-
-        return view;
     }
 
     private void initViews() {
@@ -136,6 +138,7 @@ public class FacilityListFragment extends Fragment {
         btnStop = view.findViewById(R.id.btn_stop_location);
 
         listView = view.findViewById(R.id.lv_facilities);
+        searchView = view.findViewById(R.id.et_search);
     }
 
     private void setEventListener() {
@@ -149,18 +152,18 @@ public class FacilityListFragment extends Fragment {
         btnStop.setOnClickListener(listener);
     }
 
-    private void changeView(int index) {
+    private void changeScreen(ScreenName screenName) {
         View mapView = view.findViewById(R.id.kakao_map);
         View listView = view.findViewById(R.id.lv_facilities);
 
-        switch (index) {
-            case 0:
+        switch (screenName) {
+            case KakaoMap:
                 mapView.setVisibility(View.VISIBLE);
                 frameBtn.setVisibility(View.VISIBLE);
                 listView.setVisibility(View.GONE);
                 break;
 
-            case 1:
+            case FacilityList:
                 listViewDataAdd();
                 mapView.setVisibility(View.GONE);
                 frameBtn.setVisibility(View.GONE);

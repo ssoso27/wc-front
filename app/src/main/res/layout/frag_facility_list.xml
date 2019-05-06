@@ -31,7 +31,7 @@ android:orientation="vertical">
     </LinearLayout>
 
     <EditText
-        android:id="@+id/edittext"
+        android:id="@+id/et_search"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="검색" />
