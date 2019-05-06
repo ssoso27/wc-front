@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
             switch (menuItem.getItemId()) {
                 case R.id.menu_home :
                     fg = new HomeFragment();
-                    tb.setTitle(R.string.home);
+                    tb.setTitle(R.string.app_name);
                     break;
 
                 case R.id.menu_facility :
