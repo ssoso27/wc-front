@@ -17,8 +17,9 @@ android:orientation="vertical">
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:layout_weight="1"
-            android:background="@color/guillotine_background_point"
-            android:text="지도 보기" />
+            android:background="@drawable/button_selector"
+            android:text="지도 보기"
+            android:textColor="@color/gray7"/>
 
         <Button
             android:id="@+id/btn_show_list"
@@ -26,15 +27,32 @@ android:orientation="vertical">
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:layout_weight="1"
-            android:background="@color/guillotine_background_point"
+            android:background="@drawable/button_selector"
             android:text="목록 보기" />
     </LinearLayout>
 
-    <EditText
-        android:id="@+id/et_search"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="검색" />
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/et_search"
+            android:layout_width="330dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:textColor="@color/gray6"
+            android:textSize="13dp"
+            android:text="검색" />
+
+        <Button
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/ic_search" />
+    </LinearLayout>
 
     <FrameLayout
         android:id="@+id/frame_facility"
@@ -62,6 +80,7 @@ android:orientation="vertical">
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/ic_fixed_direction" />
+
             <Button
                 android:id="@+id/btn_current_direction"
                 android:layout_width="45dp"
@@ -72,6 +91,7 @@ android:orientation="vertical">
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/ic_current_direction" />
+
             <Button
                 android:id="@+id/btn_stop_location"
                 android:layout_width="45dp"
