@@ -2,6 +2,8 @@
     <string name="app_name">복지캐쳐</string>
     <string name="home">홈화면</string>
     <string name="facility">주변 관련시설</string>
-    <string name="account">계정 설정</string>
+    <string name="account">내 계정</string>
     <string name="setting">어플 설정</string>
+    <string name="welfare">복지 서비스</string>
 </resources>
+ 

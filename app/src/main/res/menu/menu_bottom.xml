@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_home"
+        android:icon="@drawable/ic_home"
+        android:title="첫화면" />
+
+    <item
+        android:id="@+id/menu_facility"
+        android:icon="@drawable/ic_place"
+        android:title="주변시설" />
+
+    <item
+        android:id="@+id/menu_welfare"
+        android:icon="@drawable/ic_welfare"
+        android:title="복지서비스" />
+</menu>

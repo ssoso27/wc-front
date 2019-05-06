@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +13,7 @@ import android.widget.ListView;
 
 import com.uuay.welcare_catcher.R;
 import com.uuay.welcare_catcher.model.Facility;
+import com.uuay.welcare_catcher.model.MapButtonStatus;
 import com.uuay.welcare_catcher.util.PermissionChecker;
 import com.uuay.welcare_catcher.util.api.APIRequester;
 
@@ -21,9 +21,9 @@ import net.daum.mf.map.api.MapView;
 
 import java.util.List;
 
-import static com.uuay.welcare_catcher.view.facilityList.MapButtonStatus.ToCurrentLocation;
-import static com.uuay.welcare_catcher.view.facilityList.MapButtonStatus.ToFixtedDirection;
-import static com.uuay.welcare_catcher.view.facilityList.MapButtonStatus.ToStopLocation;
+import static com.uuay.welcare_catcher.model.MapButtonStatus.ToCurrentLocation;
+import static com.uuay.welcare_catcher.model.MapButtonStatus.ToFixtedDirection;
+import static com.uuay.welcare_catcher.model.MapButtonStatus.ToStopLocation;
 import static net.daum.mf.map.api.MapView.CurrentLocationTrackingMode.TrackingModeOff;
 import static net.daum.mf.map.api.MapView.CurrentLocationTrackingMode.TrackingModeOnWithHeading;
 import static net.daum.mf.map.api.MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading;
