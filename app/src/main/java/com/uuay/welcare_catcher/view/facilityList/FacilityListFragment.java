@@ -2,8 +2,10 @@ package com.uuay.welcare_catcher.view.facilityList;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,10 +39,38 @@ public class FacilityListFragment extends Fragment {
     private View view;
     private MapView mapView;
     private ListView listView;
-    private EditText searchView;
+    private EditText etSearch;
 
     private APIRequester apiRequester;
     private PermissionChecker permissionChecker;
+
+    private int size, page;
+
+    class SearchAsyncTask extends AsyncTask<Object, Object, Object> {
+        @Override
+        protected void onPreExecute() {
+            Log.d("비동기", "시작쓰");
+        }
+
+        @Override
+        protected Object doInBackground(Object[] objects) {
+            String keyword = (String) objects[0];
+            int size = (int) objects[1];
+            int page = (int) objects[2];
+
+            Log.d("비동기", "가져온당");
+            apiRequester.findFacilities(keyword, size, page);
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Object o) {
+            Log.d("비동기", "끗");
+
+            listViewDataAdd(apiRequester.getFacilities());
+        }
+    }
 
     class BtnOnClickListener implements Button.OnClickListener {
         @Override
@@ -81,6 +111,11 @@ public class FacilityListFragment extends Fragment {
                     }
                     break;
 
+                case R.id.btn_search:
+                    String keyword = etSearch.getText().toString();
+                    Log.d("키워드", keyword);
+                    new SearchAsyncTask().execute(keyword, size, page);
+
                 default:
                     break;
             }
@@ -89,6 +124,8 @@ public class FacilityListFragment extends Fragment {
 
     public FacilityListFragment() {
         apiRequester = new APIRequester();
+        size = 10;
+        page = 1;
     }
 
     @Override
@@ -106,7 +143,7 @@ public class FacilityListFragment extends Fragment {
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.frag_facility_list, container, false);
 
-        apiRequester.findFacilities("%", 10, 1);
+        new SearchAsyncTask().execute("", size, page);
 
         initViews();
         initMap();
@@ -138,13 +175,13 @@ public class FacilityListFragment extends Fragment {
         btnStop = view.findViewById(R.id.btn_stop_location);
 
         listView = view.findViewById(R.id.lv_facilities);
-        searchView = view.findViewById(R.id.et_search);
+        etSearch = view.findViewById(R.id.et_search);
     }
 
     private void setEventListener() {
         BtnOnClickListener listener = new BtnOnClickListener();
 
-
+        view.findViewById(R.id.btn_search).setOnClickListener(listener);
         view.findViewById(R.id.btn_show_map).setOnClickListener(listener);
         view.findViewById(R.id.btn_show_list).setOnClickListener(listener);
         btnFixed.setOnClickListener(listener);
@@ -164,7 +201,6 @@ public class FacilityListFragment extends Fragment {
                 break;
 
             case FacilityList:
-                listViewDataAdd();
                 mapView.setVisibility(View.GONE);
                 frameBtn.setVisibility(View.GONE);
                 listView.setVisibility(View.VISIBLE);
@@ -196,10 +232,14 @@ public class FacilityListFragment extends Fragment {
                 break;
         }
     }
+//
+//    private void search(String keyword, int size, int page) {
+//        apiRequester.findFacilities(keyword, size, page);
+//        listViewDataAdd();
+//    }
 
-    public void listViewDataAdd() {
+    private void listViewDataAdd(List<Facility> list) {
         FacilityListAdapter adapter = new FacilityListAdapter();
-        List<Facility> list = apiRequester.getFacilities();
 
         if (list != null) {
             for (int i = 0; i < list.size(); i++) {
