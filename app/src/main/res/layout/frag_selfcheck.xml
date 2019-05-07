@@ -15,122 +15,151 @@
 
         <TextView
             android:id="@+id/first_textView1"
-            android:text="@+id/textView1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp" />
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:text="@+id/textView1"
+            android:textColor="@color/colorAccent" />
 
-        <LinearLayout
+        <RadioGroup
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="3"
             android:orientation="horizontal">
 
-            <Button
+            <RadioButton
                 android:id="@+id/first_btn1"
-                android:text="@+id/btn1"
-                android:layout_width="wrap_content"
+                android:layout_width="40dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 android:layout_weight="2"
-                android:layout_margin="5dp"/>
+                android:text="@+id/btn1" />
 
-            <Button
+            <RadioButton
                 android:id="@+id/first_btn2"
-                android:text="@+id/btn2"
-                android:layout_width="wrap_content"
+                android:layout_width="40dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 android:layout_weight="2"
-                android:layout_margin="5dp"/>
+                android:text="@+id/btn2" />
 
-            <Button
+            <RadioButton
                 android:id="@+id/first_btn3"
-                android:text="@+id/btn3"
-                android:layout_width="wrap_content"
+                android:layout_width="40dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 android:layout_weight="2"
-                android:layout_margin="5dp" />
+                android:text="@+id/btn3" />
 
-        </LinearLayout>
+        </RadioGroup>
 
         <TextView
             android:id="@+id/second_textView1"
-            android:text="@+id/textView1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp" />
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:text="@+id/textView1"
+            android:textColor="@color/colorAccent" />
 
-        <LinearLayout
+        <RadioGroup
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="3"
             android:orientation="horizontal">
 
-            <Button
+            <RadioButton
                 android:id="@+id/second_btn1"
-                android:text="@+id/btn1"
-                android:layout_width="wrap_content"
+                android:layout_width="40dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 android:layout_weight="2"
-                android:layout_margin="5dp"/>
+                android:text="@+id/btn1" />
 
-            <Button
+            <RadioButton
                 android:id="@+id/second_btn2"
-                android:text="@+id/btn2"
-                android:layout_width="wrap_content"
+                android:layout_width="40dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 android:layout_weight="2"
-                android:layout_margin="5dp"/>
+                android:text="@+id/btn2" />
 
-            <Button
-                android:id="@+id/second_btn3"
-                android:text="@+id/btn3"
-                android:layout_width="wrap_content"
+            <TextView
+                android:layout_width="40dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 android:layout_weight="2"
-                android:layout_margin="5dp" />
+                android:text="@+id/btn2" />
 
-        </LinearLayout>
+        </RadioGroup>
 
         <TextView
             android:id="@+id/third_textView1"
-            android:text="@+id/textView1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp" />
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:text="@+id/textView1"
+            android:textColor="@color/colorAccent" />
 
-        <LinearLayout
+        <EditText
+            android:id="@+id/third_edittext1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/third_btn1"
-                android:text="@+id/btn1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:layout_margin="5dp"/>
-
-            <Button
-                android:id="@+id/third_btn2"
-                android:text="@+id/btn2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:layout_margin="5dp"/>
-
-            <Button
-                android:id="@+id/third_btn3"
-                android:text="@+id/btn3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:layout_margin="5dp" />
-
-        </LinearLayout>
+            android:numeric="integer"
+            android:hint="숫자만 입력해주세요"
+            android:orientation="horizontal"></EditText>
 
     </LinearLayout>
 
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Button" />
+
+    <TextView
+        android:id="@+id/fourth_textView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        android:text="@+id/textView1"
+        android:textColor="@color/colorAccent" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/fourth_btn1"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="2"
+            android:text="@+id/btn1" />
+
+        <RadioButton
+            android:id="@+id/fourth_btn2"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="2"
+            android:text="@+id/btn2" />
+
+        <RadioButton
+            android:id="@+id/fourth_btn3"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="2"
+            android:text="@+id/btn3" />
+
+    </RadioGroup>
 
 </LinearLayout>

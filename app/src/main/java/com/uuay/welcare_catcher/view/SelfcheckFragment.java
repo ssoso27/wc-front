@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.uuay.welcare_catcher.R;
@@ -25,27 +26,21 @@ public class SelfcheckFragment extends Fragment {
         TextView secondTextView = (TextView) view.findViewById(R.id.second_textView1);
         Button secondBtn1 = (Button) view.findViewById(R.id.second_btn1);
         Button secondBtn2 = (Button) view.findViewById(R.id.second_btn2);
-        Button secondBtn3 = (Button) view.findViewById(R.id.second_btn3);
 
         TextView thirdTextView = (TextView) view.findViewById(R.id.third_textView1);
-        Button thirdBtn1 = (Button) view.findViewById(R.id.third_btn1);
-        Button thirdBtn2 = (Button) view.findViewById(R.id.third_btn2);
-        Button thirdBtn3 = (Button) view.findViewById(R.id.third_btn3);
+        EditText thirdEditText = (EditText) view.findViewById(R.id.third_edittext1);
 
-        firstTextView.setText("1. 문항 ");
-        firstBtn1.setText("선택문항");
-        firstBtn2.setText("선택문항");
-        firstBtn3.setText("선택문항");
+        firstTextView.setText("1. 대상자와 관계가 어떻게 되시나요? ");
+        firstBtn1.setText("본인");
+        firstBtn2.setText("자녀");
+        firstBtn3.setText("부모");
 
-        secondTextView.setText("2. 문항");
-        secondBtn1.setText("선택문항");
-        secondBtn2.setText("선택문항");
-        secondBtn3.setText("선택문항");
+        secondTextView.setText("2. 대상자의 성별을 선택해 주세요");
+        secondBtn1.setText("남자");
+        secondBtn2.setText("여자");
 
-        thirdTextView.setText("2. 문항");
-        thirdBtn1.setText("선택문항");
-        thirdBtn2.setText("선택문항");
-        thirdBtn3.setText("선택문항");
+        thirdTextView.setText("3. 나이를 적어주세요");
+
         return view;
     }
 }
