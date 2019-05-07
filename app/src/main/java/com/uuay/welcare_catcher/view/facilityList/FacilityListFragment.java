@@ -22,6 +22,7 @@ import com.uuay.welcare_catcher.util.api.APIRequester;
 
 import net.daum.mf.map.api.MapView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.uuay.welcare_catcher.model.MapButtonStatus.*;
@@ -46,29 +47,29 @@ public class FacilityListFragment extends Fragment {
 
     private int size, page;
 
-    class SearchAsyncTask extends AsyncTask<Object, Object, Object> {
+    class SearchAsyncTask extends AsyncTask<Object, Object, List<Facility>> {
         @Override
         protected void onPreExecute() {
             Log.d("비동기", "시작쓰");
         }
 
         @Override
-        protected Object doInBackground(Object[] objects) {
+        protected List<Facility> doInBackground(Object[] objects) {
+            ArrayList<Facility> list;
             String keyword = (String) objects[0];
             int size = (int) objects[1];
             int page = (int) objects[2];
 
             Log.d("비동기", "가져온당");
-            apiRequester.findFacilities(keyword, size, page);
+            list = apiRequester.findFacilities(keyword, size, page);
 
-            return null;
+            return list;
         }
 
         @Override
-        protected void onPostExecute(Object o) {
+        protected void onPostExecute(List<Facility> list) {
             Log.d("비동기", "끗");
-
-            listViewDataAdd(apiRequester.getFacilities());
+            listViewDataAdd(list);
         }
     }
 
@@ -232,11 +233,6 @@ public class FacilityListFragment extends Fragment {
                 break;
         }
     }
-//
-//    private void search(String keyword, int size, int page) {
-//        apiRequester.findFacilities(keyword, size, page);
-//        listViewDataAdd();
-//    }
 
     private void listViewDataAdd(List<Facility> list) {
         FacilityListAdapter adapter = new FacilityListAdapter();
