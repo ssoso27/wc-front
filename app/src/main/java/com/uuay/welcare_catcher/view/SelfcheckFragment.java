@@ -11,9 +11,6 @@ import android.widget.TextView;
 import com.uuay.welcare_catcher.R;
 
 public class SelfcheckFragment extends Fragment {
-    public SelfcheckFragment() {
-
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
