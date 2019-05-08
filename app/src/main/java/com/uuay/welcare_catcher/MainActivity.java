@@ -8,6 +8,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Base64;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -17,6 +19,9 @@ import com.uuay.welcare_catcher.view.facilityList.FacilityListFragment;
 import com.uuay.welcare_catcher.view.HomeFragment;
 import com.uuay.welcare_catcher.view.SettingFragment;
 import com.uuay.welcare_catcher.view.welfareList.WelfareListFragment;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class MainActivity extends AppCompatActivity {
 

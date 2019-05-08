@@ -90,7 +90,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:layout_weight="2"
-                android:text="@+id/btn2" />
+                android:text="" />
 
         </RadioGroup>
 
@@ -110,16 +110,10 @@
             android:layout_weight="3"
             android:numeric="integer"
             android:hint="숫자만 입력해주세요"
-            android:orientation="horizontal"></EditText>
+            android:imeOptions="actionSearch"
+            android:orientation="horizontal" />
 
     </LinearLayout>
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Button" />
 
     <TextView
         android:id="@+id/fourth_textView1"
@@ -131,34 +125,165 @@
         android:textColor="@color/colorAccent" />
 
     <RadioGroup
+        android:id="@+id/fourth_radio_group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="3"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
-        <RadioButton
-            android:id="@+id/fourth_btn1"
-            android:layout_width="40dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_weight="2"
-            android:text="@+id/btn1" />
+            android:orientation="horizontal">
 
-        <RadioButton
-            android:id="@+id/fourth_btn2"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_weight="2"
-            android:text="@+id/btn2" />
+            <RadioButton
+                android:id="@+id/fourth_btn1"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="2"
+                android:text="@+id/fourth_btn1" />
 
-        <RadioButton
-            android:id="@+id/fourth_btn3"
-            android:layout_width="40dp"
+            <RadioButton
+                android:id="@+id/fourth_btn2"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="2"
+                android:text="@+id/fourth_btn2" />
+
+            <RadioButton
+                android:id="@+id/fourth_btn3"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="2"
+                android:text="@+id/fourth_btn3" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_weight="2"
-            android:text="@+id/btn3" />
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/fourth_btn4"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="2"
+                android:text="@+id/fourth_btn4" />
+
+            <RadioButton
+                android:id="@+id/fourth_btn5"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="2"
+                android:text="@+id/fourth_btn5" />
+
+            <RadioButton
+                android:id="@+id/fourth_btn6"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="2"
+                android:text="@+id/fourth_btn6" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/fourth_btn7"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="2"
+                android:text="@+id/fourth_btn7" />
+
+            <RadioButton
+                android:id="@+id/fourth_btn8"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="2"
+                android:text="@+id/fourth_btn8" />
+
+            <RadioButton
+                android:id="@+id/fourth_btn9"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="2"
+                android:text="@+id/fourth_btn9" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/fourth_btn10"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="2"
+                android:text="@+id/fourth_btn10" />
+
+            <RadioButton
+                android:id="@+id/fourth_btn11"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="2"
+                android:text="@+id/fourth_btn11" />
+
+            <RadioButton
+                android:id="@+id/fourth_btn12"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="2"
+                android:text="@+id/fourth_btn12" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/fourth_btn13"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="2"
+                android:text="@+id/fourth_btn13" />
+
+            <RadioButton
+                android:id="@+id/fourth_btn14"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="2"
+                android:text="@+id/fourth_btn14" />
+
+            <RadioButton
+                android:id="@+id/fourth_btn15"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="2"
+                android:text="@+id/fourth_btn15" />
+
+        </LinearLayout>
 
     </RadioGroup>
 
