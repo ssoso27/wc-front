@@ -9,39 +9,63 @@
     android:paddingLeft="20dp">
 
     <LinearLayout
+        android:id="@+id/question1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <TextView
+<<<<<<< HEAD
             android:id="@+id/first_textView1"
+=======
+            android:id="@+id/tv_gender"
+>>>>>>> feature/F-18
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"
+<<<<<<< HEAD
             android:text="@+id/textView1"
             android:textColor="@color/colorAccent" />
 
         <RadioGroup
+=======
+            android:text="성별을 선택해주세요" />
+
+        <RadioGroup
+            android:id="@+id/rg_gender"
+>>>>>>> feature/F-18
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="3"
             android:orientation="horizontal">
 
             <RadioButton
+<<<<<<< HEAD
                 android:id="@+id/first_btn1"
+=======
+                android:id="@+id/rb1_gender"
+>>>>>>> feature/F-18
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:layout_weight="2"
+<<<<<<< HEAD
                 android:text="@+id/btn1" />
 
             <RadioButton
                 android:id="@+id/first_btn2"
+=======
+                android:text="남자" />
+
+            <RadioButton
+                android:id="@+id/rb2_gender"
+>>>>>>> feature/F-18
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:layout_weight="2"
+<<<<<<< HEAD
                 android:text="@+id/btn2" />
 
             <RadioButton
@@ -56,19 +80,45 @@
 
         <TextView
             android:id="@+id/second_textView1"
+=======
+                android:text="여자" />
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/question3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_age"
+>>>>>>> feature/F-18
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"
+<<<<<<< HEAD
             android:text="@+id/textView1"
             android:textColor="@color/colorAccent" />
 
         <RadioGroup
+=======
+            android:text="나이가 어떻게 되시나요?" />
+
+        <EditText
+            android:id="@+id/et_age"
+>>>>>>> feature/F-18
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:orientation="horizontal">
+            android:numeric="integer"
+            android:hint="숫자만 입력해주세요"
+            android:imeOptions="actionSearch"
+            android:orientation="horizontal" />
 
+<<<<<<< HEAD
             <RadioButton
                 android:id="@+id/second_btn1"
                 android:layout_width="40dp"
@@ -130,10 +180,70 @@
         android:layout_height="wrap_content"
         android:layout_weight="3"
         android:orientation="vertical">
+=======
+    </LinearLayout>
 
-        <LinearLayout
+    <LinearLayout
+        android:id="@+id/question4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_disability_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:text="어떤 장애를 가지고 계신가요?" />
+
+        <Spinner
+            android:id="@+id/spinner_disability_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/question5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_disability_grade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:text="장애 등급은 어떻게 되시나요?" />
+
+        <Spinner
+            android:id="@+id/spinner_disability_grade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_add_question"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="항목추가" />
+>>>>>>> feature/F-18
+
+    <LinearLayout
+        android:id="@+id/question6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_area"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+<<<<<<< HEAD
             android:orientation="horizontal">
 
             <RadioButton
@@ -189,8 +299,24 @@
                 android:layout_margin="5dp"
                 android:layout_weight="2"
                 android:text="@+id/fourth_btn6" />
+=======
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:text="어느 지역에 살고 계신가요?" />
 
-        </LinearLayout>
+        <Spinner
+            android:id="@+id/spinner_area"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+>>>>>>> feature/F-18
+
+    <LinearLayout
+        android:id="@+id/add_question_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -285,6 +411,15 @@
 
         </LinearLayout>
 
+<<<<<<< HEAD
     </RadioGroup>
+=======
+    <Button
+        android:id="@+id/btn_selfcheck_end"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="저장하기" />
+>>>>>>> feature/F-18
 
 </LinearLayout>
