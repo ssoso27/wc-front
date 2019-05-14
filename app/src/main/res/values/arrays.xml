@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="sc_question4">
+        <item>시각</item>
+        <item>청각</item>
+        <item>언어</item>
+        <item>지적</item>
+        <item>지체</item>
+        <item>정신</item>
+        <item>자폐성</item>
+        <item>호흡기</item>
+        <item>뇌병변</item>
+        <item>신장</item>
+        <item>심장</item>
+        <item>간기능</item>
+        <item>안면</item>
+        <item>간질</item>
+        <item>장루, 요루</item>
+    </string-array>
+
+    <string-array name="sc_question5">
+        <item>1급</item>
+        <item>2급</item>
+        <item>3급</item>
+        <item>4급</item>
+        <item>5급</item>
+        <item>6급</item>
+    </string-array>
+
+    <string-array name="sc_question6">
+        <item>서울</item>
+        <item>...</item>
+        <item>...</item>
+        <item>제주</item>
+    </string-array>
+</resources>
