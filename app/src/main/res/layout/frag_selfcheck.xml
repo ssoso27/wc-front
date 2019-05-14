@@ -15,72 +15,36 @@
         android:orientation="vertical">
 
         <TextView
-<<<<<<< HEAD
-            android:id="@+id/first_textView1"
-=======
             android:id="@+id/tv_gender"
->>>>>>> feature/F-18
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"
-<<<<<<< HEAD
-            android:text="@+id/textView1"
-            android:textColor="@color/colorAccent" />
-
-        <RadioGroup
-=======
             android:text="성별을 선택해주세요" />
 
         <RadioGroup
             android:id="@+id/rg_gender"
->>>>>>> feature/F-18
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:layout_weight="3"
-            android:orientation="horizontal">
+            android:text="성별을 선택해주세요" >
 
             <RadioButton
-<<<<<<< HEAD
-                android:id="@+id/first_btn1"
-=======
                 android:id="@+id/rb1_gender"
->>>>>>> feature/F-18
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:layout_weight="2"
-<<<<<<< HEAD
-                android:text="@+id/btn1" />
-
-            <RadioButton
-                android:id="@+id/first_btn2"
-=======
                 android:text="남자" />
 
             <RadioButton
+
                 android:id="@+id/rb2_gender"
->>>>>>> feature/F-18
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:layout_weight="2"
-<<<<<<< HEAD
-                android:text="@+id/btn2" />
-
-            <RadioButton
-                android:id="@+id/first_btn3"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="2"
-                android:text="@+id/btn3" />
-
-        </RadioGroup>
-
-        <TextView
-            android:id="@+id/second_textView1"
-=======
                 android:text="여자" />
 
         </RadioGroup>
@@ -95,22 +59,14 @@
 
         <TextView
             android:id="@+id/tv_age"
->>>>>>> feature/F-18
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"
-<<<<<<< HEAD
-            android:text="@+id/textView1"
-            android:textColor="@color/colorAccent" />
-
-        <RadioGroup
-=======
             android:text="나이가 어떻게 되시나요?" />
 
         <EditText
             android:id="@+id/et_age"
->>>>>>> feature/F-18
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:numeric="integer"
@@ -118,69 +74,6 @@
             android:imeOptions="actionSearch"
             android:orientation="horizontal" />
 
-<<<<<<< HEAD
-            <RadioButton
-                android:id="@+id/second_btn1"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="2"
-                android:text="@+id/btn1" />
-
-            <RadioButton
-                android:id="@+id/second_btn2"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="2"
-                android:text="@+id/btn2" />
-
-            <TextView
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="2"
-                android:text="" />
-
-        </RadioGroup>
-
-        <TextView
-            android:id="@+id/third_textView1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="5dp"
-            android:text="@+id/textView1"
-            android:textColor="@color/colorAccent" />
-
-        <EditText
-            android:id="@+id/third_edittext1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:numeric="integer"
-            android:hint="숫자만 입력해주세요"
-            android:imeOptions="actionSearch"
-            android:orientation="horizontal" />
-
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/fourth_textView1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="5dp"
-        android:text="@+id/textView1"
-        android:textColor="@color/colorAccent" />
-
-    <RadioGroup
-        android:id="@+id/fourth_radio_group"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="3"
-        android:orientation="vertical">
-=======
     </LinearLayout>
 
     <LinearLayout
@@ -225,14 +118,6 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_add_question"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:text="항목추가" />
->>>>>>> feature/F-18
-
     <LinearLayout
         android:id="@+id/question6"
         android:layout_width="match_parent"
@@ -243,63 +128,6 @@
             android:id="@+id/tv_area"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-<<<<<<< HEAD
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/fourth_btn1"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="2"
-                android:text="@+id/fourth_btn1" />
-
-            <RadioButton
-                android:id="@+id/fourth_btn2"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="2"
-                android:text="@+id/fourth_btn2" />
-
-            <RadioButton
-                android:id="@+id/fourth_btn3"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="2"
-                android:text="@+id/fourth_btn3" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/fourth_btn4"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="2"
-                android:text="@+id/fourth_btn4" />
-
-            <RadioButton
-                android:id="@+id/fourth_btn5"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="2"
-                android:text="@+id/fourth_btn5" />
-
-            <RadioButton
-                android:id="@+id/fourth_btn6"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="2"
-                android:text="@+id/fourth_btn6" />
-=======
             android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"
             android:text="어느 지역에 살고 계신가요?" />
@@ -310,116 +138,12 @@
             android:layout_height="wrap_content" />
 
     </LinearLayout>
->>>>>>> feature/F-18
 
-    <LinearLayout
-        android:id="@+id/add_question_field"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/fourth_btn7"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="2"
-                android:text="@+id/fourth_btn7" />
-
-            <RadioButton
-                android:id="@+id/fourth_btn8"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="2"
-                android:text="@+id/fourth_btn8" />
-
-            <RadioButton
-                android:id="@+id/fourth_btn9"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="2"
-                android:text="@+id/fourth_btn9" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/fourth_btn10"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="2"
-                android:text="@+id/fourth_btn10" />
-
-            <RadioButton
-                android:id="@+id/fourth_btn11"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="2"
-                android:text="@+id/fourth_btn11" />
-
-            <RadioButton
-                android:id="@+id/fourth_btn12"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="2"
-                android:text="@+id/fourth_btn12" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/fourth_btn13"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="2"
-                android:text="@+id/fourth_btn13" />
-
-            <RadioButton
-                android:id="@+id/fourth_btn14"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="2"
-                android:text="@+id/fourth_btn14" />
-
-            <RadioButton
-                android:id="@+id/fourth_btn15"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="2"
-                android:text="@+id/fourth_btn15" />
-
-        </LinearLayout>
-
-<<<<<<< HEAD
-    </RadioGroup>
-=======
     <Button
         android:id="@+id/btn_selfcheck_end"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:text="저장하기" />
->>>>>>> feature/F-18
 
 </LinearLayout>
