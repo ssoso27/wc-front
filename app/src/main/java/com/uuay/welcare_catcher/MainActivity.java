@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.uuay.welcare_catcher.util.PermissionChecker;
+import com.uuay.welcare_catcher.view.AccountFragment;
 import com.uuay.welcare_catcher.view.AccountFragmentInfo;
 import com.uuay.welcare_catcher.view.facilityList.FacilityListFragment;
 import com.uuay.welcare_catcher.view.HomeFragment;
@@ -84,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.menu_account :
                 // TODO : 로그인 여부에 따라 회원가입창 or 계정관리창 띄우기
-                setFragment(new AccountFragmentInfo());
+                setFragment(new AccountFragment());
                 tb.setTitle(R.string.account);
                 return true;
 
