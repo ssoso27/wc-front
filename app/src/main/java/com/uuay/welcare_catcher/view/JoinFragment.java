@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,14 +18,14 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.uuay.welcare_catcher.R;
+import com.uuay.welcare_catcher.model.Account;
+import com.uuay.welcare_catcher.util.FragmentChanger;
 import com.uuay.welcare_catcher.util.api.APIRequester;
 
 public class JoinFragment extends Fragment {
     private String agegroup = null;
     private String disability_grade = null;
     private String disability_type = null;
-
-    private Boolean isDuplicate = true;
 
     private EditText et_email;
     private EditText et_password;
@@ -53,8 +56,6 @@ public class JoinFragment extends Fragment {
             public void onClick(View v) {
                 // 데이터들 가져오고
                 String email = et_email.getText().toString();
-                String password = et_password.getText().toString();
-                String nickname = et_nickname.getText().toString();
 
                 // 이메일 검사 한 다음에
                 new DuplicationCheckAsync().execute(email);
@@ -112,10 +113,40 @@ public class JoinFragment extends Fragment {
         }
 
         @Override
-        protected void onPostExecute(Boolean result) {
-            isDuplicate = result;
-            Toast.makeText(getContext(), isDuplicate + "", Toast.LENGTH_SHORT).show();
+        protected void onPostExecute(Boolean isDuplicate) {
+            String email = et_email.getText().toString();
+            String password = et_password.getText().toString();
+            String nickname = et_nickname.getText().toString();
+
+            if (isDuplicate) {
+                Toast.makeText(getContext(), "이미 가입한 이메일입니다.", Toast.LENGTH_SHORT).show();
+            } else {
+                new JoinAsync().execute(email, password, nickname, agegroup, disability_type, disability_grade);
+            }
         }
     }
 
+    class JoinAsync extends AsyncTask<Object, Object, Object> {
+
+        @Override
+        protected Object doInBackground(Object... objects) {
+            Account account = new Account();
+            account.setEmail((String) objects[0]);
+            account.setPassword((String)objects[1]);
+            account.setNickname((String) objects[2]);
+            account.setAge_group((String) objects[3]);
+            account.setDisability_type((String) objects[4]);
+            account.setDisability_grade((String) objects[5]);
+
+            apiRequester.join(account);
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Object o) {
+            Toast.makeText(getContext(), "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show();
+            FragmentChanger.setFragment((AppCompatActivity) getActivity(), new LoginFragment());
+        }
+    }
 }

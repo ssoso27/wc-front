@@ -4,18 +4,13 @@ public class Account {
     private String nickname;
     private String profile_img;
     private String email;
+    private String kakao_id;
+    private String password;
     private String age_group;
     private String disability_type;
     private String disability_grade;
 
-    public Account(String nickname, String profile_img, String email, String age_group, String disability_type, String disability_grade) {
-        this.nickname = nickname;
-        this.profile_img = profile_img;
-        this.email = email;
-        this.age_group = age_group;
-        this.disability_type = disability_type;
-        this.disability_grade = disability_grade;
-    }
+    public Account() {}
 
     public String getNickname() {
         return nickname;
@@ -41,6 +36,14 @@ public class Account {
         this.email = email;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public String getAge_group() {
         return age_group;
     }
@@ -63,5 +66,13 @@ public class Account {
 
     public void setDisability_grade(String disability_grade) {
         this.disability_grade = disability_grade;
+    }
+
+    public String getKakao_id() {
+        return kakao_id;
+    }
+
+    public void setKakao_id(String kakao_id) {
+        this.kakao_id = kakao_id;
     }
 }

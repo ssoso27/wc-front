@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.uuay.welcare_catcher.util.FragmentChanger;
 import com.uuay.welcare_catcher.util.PermissionChecker;
 import com.uuay.welcare_catcher.view.LoginFragment;
 import com.uuay.welcare_catcher.view.facilityList.FacilityListFragment;
@@ -47,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
             }
 
-            setFragment(fg);
+            FragmentChanger.setFragment(MainActivity.this, fg);
             return true;
         }
     }
@@ -64,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
         initToolbar();
         initBottomNav();
-        setFragment(new HomeFragment());
+        FragmentChanger.setFragment(this, new HomeFragment());
     }
 
     @Override
@@ -79,12 +80,12 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.menu_account :
                 // TODO : 로그인 여부에 따라 회원가입창 or 계정관리창 띄우기
-                setFragment(new LoginFragment());
+                FragmentChanger.setFragment(this, new LoginFragment());
                 tb.setTitle(R.string.account);
                 return true;
 
             case R.id.menu_settings:
-                setFragment(new SettingFragment());
+                FragmentChanger.setFragment(this, new SettingFragment());
                 tb.setTitle(R.string.setting);
                 return true;
             default :
@@ -101,12 +102,5 @@ public class MainActivity extends AppCompatActivity {
         SelectedListener listener = new SelectedListener();
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation_view);
         bottomNavigationView.setOnNavigationItemSelectedListener(listener);
-    }
-
-    public void setFragment(Fragment fragment) {
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fm.beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_place, fragment);
-        fragmentTransaction.commit();
     }
 }
