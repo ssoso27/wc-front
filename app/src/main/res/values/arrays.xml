@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="sc_question4">
+        <item>장애유형</item>
         <item>시각</item>
         <item>청각</item>
         <item>언어</item>
@@ -19,6 +20,7 @@
     </string-array>
 
     <string-array name="sc_question5">
+        <item>장애등급</item>
         <item>1급</item>
         <item>2급</item>
         <item>3급</item>
@@ -35,6 +37,7 @@
     </string-array>
 
     <string-array name="agegroup">
+        <item>연령대</item>
         <item>영유아</item>
         <item>아동</item>
         <item>청소년</item>
