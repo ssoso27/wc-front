@@ -23,4 +23,7 @@ public interface RetrofitAPI {
             , @Query("size") int size
             , @Query("page") int page
     );
+
+    @GET("accounts/duplicate-email")
+    Call<String> duplicateEmail(@Query("email") String email);
 }

@@ -36,11 +36,12 @@ public class SessionCallback implements ISessionCallback {
                 APIRequester apiRequester = new APIRequester();
                 Log.e("SessionCallback::", "onSuccess");
 
-                Account account = new Account(result.getNickname()
-                        , result.getProfileImagePath()
-                        , result.getKakaoAccount().getEmail()
-                        , "60"
-                        , "5");
+                Account account = new Account();
+                account.setNickname(result.getNickname());
+                account.setEmail(result.getKakaoAccount().getEmail());
+                account.setPassword(result.getProfileImagePath());
+                account.setKakao_id(String.valueOf(result.getId()));
+
                 GlobalApplication.setCurrentAccount(account);
                 apiRequester.join(account);
             }

@@ -1,6 +1,7 @@
 package com.uuay.welcare_catcher.util.api;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import com.uuay.welcare_catcher.model.Account;
 import com.uuay.welcare_catcher.model.Facility;
@@ -25,6 +26,25 @@ public class APIRequester {
     public void join(Account account) {
         Call<String> stringCall = retrofitAPI.join(account);
         stringCall.enqueue(stringCallback);
+    }
+
+    public boolean duplicateEmail(String email) {
+        boolean isDuplicate = true;
+
+        try {
+            Call<String> call = retrofitAPI.duplicateEmail(email);
+            Response<String> response = call.execute();
+
+            if (response.isSuccessful()) {
+                isDuplicate = Boolean.parseBoolean(response.body());
+            }
+
+            return isDuplicate;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return true;
     }
 
     public ArrayList<Facility> findFacilities(String keyword, int size, int page) {
