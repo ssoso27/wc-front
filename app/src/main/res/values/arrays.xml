@@ -33,4 +33,13 @@
         <item>...</item>
         <item>제주</item>
     </string-array>
+
+    <string-array name="agegroup">
+        <item>영유아</item>
+        <item>아동</item>
+        <item>청소년</item>
+        <item>청년</item>
+        <item>중장년</item>
+        <item>노년</item>
+    </string-array>
 </resources>
