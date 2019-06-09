@@ -36,14 +36,11 @@ public class APIRequester {
             Response<String> response = call.execute();
 
             if (response.isSuccessful()) {
-                if (response.body() == null) {
-                    isDuplicate = false;
-                }
+                isDuplicate = Boolean.parseBoolean(response.body());
             }
 
             return isDuplicate;
         } catch (Exception e) {
-            Log.d("APIRequester", "에러발생");
             e.printStackTrace();
         }
 

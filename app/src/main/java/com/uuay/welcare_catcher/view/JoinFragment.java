@@ -1,14 +1,15 @@
 package com.uuay.welcare_catcher.view;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -20,21 +21,27 @@ public class JoinFragment extends Fragment {
     private String agegroup = null;
     private String disability_grade = null;
     private String disability_type = null;
+
+    private Boolean isDuplicate = true;
+
+    private EditText et_email;
+    private EditText et_password;
+    private EditText et_nickname;
+    private Spinner spinner_agegroup;
+    private Spinner spinner_disability_grade;
+    private Spinner spinner_disability_type;
+
     private APIRequester apiRequester = null;
+    private View view;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.frag_join, container, false);
+
+        view = inflater.inflate(R.layout.frag_join, container, false);
 
         apiRequester = new APIRequester();
-
-        final EditText et_email = view.findViewById(R.id.et_email);
-        final EditText et_password = view.findViewById(R.id.et_password);
-        final EditText et_nickname = view.findViewById(R.id.et_nickname);
-        Spinner spinner_agegroup = (Spinner) view.findViewById(R.id.spinner_agegroup);
-        Spinner spinner_disability_grade = (Spinner) view.findViewById(R.id.spinner_disability_grade);
-        Spinner spinner_disability_type = (Spinner) view.findViewById(R.id.spinner_disability_type);
+        initViews();
 
         ItemListener itemListener = new ItemListener();
         spinner_agegroup.setOnItemSelectedListener(itemListener);
@@ -50,12 +57,22 @@ public class JoinFragment extends Fragment {
                 String nickname = et_nickname.getText().toString();
 
                 // 이메일 검사 한 다음에
-                Toast.makeText(getContext(), apiRequester.duplicateEmail(email) + "", Toast.LENGTH_SHORT).show();
+                new DuplicationCheckAsync().execute(email);
+
                 // 회원가입
             }
         });
 
         return view;
+    }
+
+    private void initViews() {
+        et_email = view.findViewById(R.id.et_email);
+        et_password = view.findViewById(R.id.et_password);
+        et_nickname = view.findViewById(R.id.et_nickname);
+        spinner_agegroup = (Spinner) view.findViewById(R.id.spinner_agegroup);
+        spinner_disability_grade = (Spinner) view.findViewById(R.id.spinner_disability_grade);
+        spinner_disability_type = (Spinner) view.findViewById(R.id.spinner_disability_type);
     }
 
     class ItemListener implements AdapterView.OnItemSelectedListener {
@@ -85,4 +102,20 @@ public class JoinFragment extends Fragment {
 
         }
     }
+
+    class DuplicationCheckAsync extends AsyncTask<Object, Object, Boolean> {
+        @Override
+        protected Boolean doInBackground(Object[] objects) {
+            String email = (String) objects[0];
+
+            return apiRequester.duplicateEmail(email);
+        }
+
+        @Override
+        protected void onPostExecute(Boolean result) {
+            isDuplicate = result;
+            Toast.makeText(getContext(), isDuplicate + "", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 }
