@@ -3,18 +3,21 @@ package com.uuay.welcare_catcher.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.kakao.auth.Session;
 import com.kakao.usermgmt.LoginButton;
 import com.uuay.welcare_catcher.R;
 import com.uuay.welcare_catcher.util.kakao.SessionCallback;
 
-public class AccountFragment extends Fragment {
+public class LoginFragment extends Fragment {
     private SessionCallback callback;
-    public AccountFragment() {
+    public LoginFragment() {
 
     }
 
@@ -43,6 +46,9 @@ public class AccountFragment extends Fragment {
         callback = new SessionCallback();
         Session.getCurrentSession().addCallback(callback);
 
+        ClickListener listener = new ClickListener();
+        view.findViewById(R.id.btn_joinpage).setOnClickListener(listener);
+
         return view;
     }
 
@@ -50,5 +56,23 @@ public class AccountFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         Session.getCurrentSession().removeCallback(callback);
+    }
+
+    public void setFragment(Fragment fragment) {
+        FragmentManager fm = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_place, fragment);
+        fragmentTransaction.commit();
+    }
+
+    class ClickListener implements Button.OnClickListener {
+
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.btn_joinpage:
+                    setFragment(new JoinFragment());
+            }
+        }
     }
 }

@@ -8,21 +8,15 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Base64;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.uuay.welcare_catcher.util.PermissionChecker;
-import com.uuay.welcare_catcher.view.AccountFragment;
-import com.uuay.welcare_catcher.view.AccountFragmentInfo;
+import com.uuay.welcare_catcher.view.LoginFragment;
 import com.uuay.welcare_catcher.view.facilityList.FacilityListFragment;
 import com.uuay.welcare_catcher.view.HomeFragment;
 import com.uuay.welcare_catcher.view.SettingFragment;
 import com.uuay.welcare_catcher.view.welfareList.WelfareListFragment;
-
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -85,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.menu_account :
                 // TODO : 로그인 여부에 따라 회원가입창 or 계정관리창 띄우기
-                setFragment(new AccountFragment());
+                setFragment(new LoginFragment());
                 tb.setTitle(R.string.account);
                 return true;
 
