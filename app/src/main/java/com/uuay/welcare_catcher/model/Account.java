@@ -1,21 +1,20 @@
 package com.uuay.welcare_catcher.model;
 
-import lombok.Data;
-
-@Data
 public class Account {
     private String nickname;
     private String profile_img;
     private String email;
+    private String age_group;
     private String disability_type;
     private String disability_grade;
 
-    public Account(String nickname, String profile_img, String email, String disability_type, String disability_grade) {
+    public Account(String nickname, String profile_img, String email, String age_group, String disability_type, String disability_grade) {
         this.nickname = nickname;
-        this.email = email;
         this.profile_img = profile_img;
-        this.disability_grade = disability_grade;
+        this.email = email;
+        this.age_group = age_group;
         this.disability_type = disability_type;
+        this.disability_grade = disability_grade;
     }
 
     public String getNickname() {
@@ -40,6 +39,14 @@ public class Account {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getAge_group() {
+        return age_group;
+    }
+
+    public void setAge_group(String age_group) {
+        this.age_group = age_group;
     }
 
     public String getDisability_type() {

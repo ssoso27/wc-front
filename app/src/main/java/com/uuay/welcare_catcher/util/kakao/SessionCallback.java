@@ -39,8 +39,9 @@ public class SessionCallback implements ISessionCallback {
                 Account account = new Account(result.getNickname()
                         , result.getProfileImagePath()
                         , result.getKakaoAccount().getEmail()
-                        , "60"
-                        , "5");
+                        , ""
+                        , ""
+                        , "");
                 GlobalApplication.setCurrentAccount(account);
                 apiRequester.join(account);
             }
