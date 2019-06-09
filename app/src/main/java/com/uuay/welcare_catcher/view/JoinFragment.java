@@ -14,16 +14,20 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.uuay.welcare_catcher.R;
+import com.uuay.welcare_catcher.util.api.APIRequester;
 
 public class JoinFragment extends Fragment {
     private String agegroup = null;
     private String disability_grade = null;
     private String disability_type = null;
+    private APIRequester apiRequester = null;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.frag_join, container, false);
+
+        apiRequester = new APIRequester();
 
         final EditText et_email = view.findViewById(R.id.et_email);
         final EditText et_password = view.findViewById(R.id.et_password);
@@ -45,9 +49,8 @@ public class JoinFragment extends Fragment {
                 String password = et_password.getText().toString();
                 String nickname = et_nickname.getText().toString();
 
-                Toast.makeText(getContext(), email + agegroup, Toast.LENGTH_SHORT).show();
-
                 // 이메일 검사 한 다음에
+                Toast.makeText(getContext(), apiRequester.duplicateEmail(email) + "", Toast.LENGTH_SHORT).show();
                 // 회원가입
             }
         });
