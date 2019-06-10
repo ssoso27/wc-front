@@ -20,7 +20,7 @@ public class APIRequester {
     private RetrofitAPI retrofitAPI;
 
     public APIRequester() {
-        this.setRetrofit();
+        retrofitAPI = RestfulAdapter.getInstance();
     }
 
     public void join(Account account) {
@@ -84,13 +84,4 @@ public class APIRequester {
             t.printStackTrace();
         }
     };
-
-    private void setRetrofit() {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://54.180.147.7")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        retrofitAPI = retrofit.create(RetrofitAPI.class);
-    }
 }
