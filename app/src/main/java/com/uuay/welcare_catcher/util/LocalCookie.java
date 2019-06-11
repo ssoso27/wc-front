@@ -25,4 +25,12 @@ public class LocalCookie {
     public String get(String key) {
         return cookies.get(key);
     }
+
+    public Boolean containsKey(String key) {
+        return cookies.containsKey(key);
+    }
+
+    public Boolean isEmpty() {
+        return cookies.isEmpty();
+    }
 }

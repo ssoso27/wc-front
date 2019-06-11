@@ -6,16 +6,19 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.uuay.welcare_catcher.util.FragmentChanger;
+import com.uuay.welcare_catcher.util.LocalCookie;
 import com.uuay.welcare_catcher.util.PermissionChecker;
-import com.uuay.welcare_catcher.view.LoginFragment;
-import com.uuay.welcare_catcher.view.SelfcheckFragment;
-import com.uuay.welcare_catcher.view.facilityList.FacilityListFragment;
 import com.uuay.welcare_catcher.view.HomeFragment;
+import com.uuay.welcare_catcher.view.LoginFragment;
+import com.uuay.welcare_catcher.view.ProfileFragment;
+import com.uuay.welcare_catcher.view.SelfcheckFragment;
 import com.uuay.welcare_catcher.view.SettingFragment;
+import com.uuay.welcare_catcher.view.facilityList.FacilityListFragment;
 import com.uuay.welcare_catcher.view.welfareList.WelfareListFragment;
 
 public class MainActivity extends AppCompatActivity implements SelfcheckFragment.setCategoryItemListener {
@@ -78,9 +81,16 @@ public class MainActivity extends AppCompatActivity implements SelfcheckFragment
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_account :
-                // TODO : 로그인 여부에 따라 회원가입창 or 계정관리창 띄우기
-                FragmentChanger.setFragment(this, new LoginFragment());
-                tb.setTitle(R.string.account);
+                LocalCookie localCookie = LocalCookie.getInstance();
+                if (localCookie.containsKey("isLogin")) {
+                    if (localCookie.get("isLogin").equals("true")) {
+                        FragmentChanger.setFragment(this, new ProfileFragment());
+                        tb.setTitle(R.string.profile);
+                    }
+                } else {
+                    FragmentChanger.setFragment(this, new LoginFragment());
+                    tb.setTitle(R.string.login);
+                }
                 return true;
 
             case R.id.menu_settings:

@@ -21,11 +21,11 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /*
-AccountFragmentInfo ??
+ProfileFragment ??
 클래스명을 추천받습니다.
  */
-public class AccountFragmentInfo extends Fragment {
-    public AccountFragmentInfo() {
+public class ProfileFragment extends Fragment {
+    public ProfileFragment() {
 
     }
 
