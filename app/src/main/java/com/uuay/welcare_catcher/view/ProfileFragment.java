@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -32,26 +31,25 @@ public class ProfileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.frag_account_info, container, false);
+        View view = inflater.inflate(R.layout.frag_profile, container, false);
         final Account current = GlobalApplication.getCurrentAccount();
 
-        TextView textView1 = (TextView) view.findViewById(R.id.textView1);
-        TextView textView2 = (TextView) view.findViewById(R.id.textView2);
-        TextView textView3 = (TextView) view.findViewById(R.id.textView3);
-        TextView textView4 = (TextView) view.findViewById(R.id.textView4);
-        TextView textView5 = (TextView) view.findViewById(R.id.textView5);
-        ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
-        ImageButton imagebtn = (ImageButton) view.findViewById(R.id.imageButton);
+        TextView tv_nickname = (TextView) view.findViewById(R.id.tv_nickname);
+        TextView tv_disability = (TextView) view.findViewById(R.id.tv_disability);
+        TextView tv_email = (TextView) view.findViewById(R.id.tv_email);
+//        TextView textView4 = (TextView) view.findViewById(R.id.textView4);
+//        TextView textView5 = (TextView) view.findViewById(R.id.textView5);
+        ImageView img_profile = (ImageView) view.findViewById(R.id.img_profile);
         final Bitmap[] bitmap = new Bitmap[1];
 
-        textView1.setText("닉네임");
-        textView2.setText("장애유형 장애등급");
-        textView3.setText("이메일");
-        textView4.setText("받는 중인 혜택");
-        textView5.setText("받는 중인 혜택 중 하나 외 N개");
+        tv_nickname.setText("닉네임");
+        tv_disability.setText("장애유형 장애등급");
+        tv_email.setText("이메일");
+//        textView4.setText("받는 중인 혜택");
+//        textView5.setText("받는 중인 혜택 중 하나 외 N개");
 
         if (current != null) {
-            bringProfileImg(current, imageView, bitmap);
+            bringProfileImg(current, img_profile, bitmap);
         }
         return view;
     }

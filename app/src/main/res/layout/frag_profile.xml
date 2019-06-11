@@ -13,54 +13,46 @@
         android:padding="10dp">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/img_profile"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
-            android:src="@drawable/ic_profile_sample" />
+            android:src="@drawable/default_user" />
 
         <TextView
-            android:id="@+id/textView1"
+            android:id="@+id/tv_nickname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_toRightOf="@id/imageView"
+            android:layout_toRightOf="@id/img_profile"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:textSize="25dp"
-            android:text="@+id/textView1" />
+            android:text="@+id/tv_nickname" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/tv_disability"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@id/textView1"
-            android:layout_toRightOf="@id/imageView"
+            android:layout_alignTop="@id/tv_nickname"
+            android:layout_toRightOf="@id/img_profile"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="40dp"
             android:textSize="25dp"
-            android:text="@+id/textView2" />
+            android:text="@+id/tv_disability" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/tv_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@id/textView2"
-            android:layout_toRightOf="@id/imageView"
+            android:layout_alignTop="@id/tv_disability"
+            android:layout_toRightOf="@id/img_profile"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="40dp"
             android:textSize="25dp"
-            android:text="@+id/textView3" />
+            android:text="@+id/tv_email" />
 
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_margin="5dp"
-            app:srcCompat="@android:drawable/ic_menu_edit" />
     </RelativeLayout>
 
     <RelativeLayout

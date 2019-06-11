@@ -2,6 +2,7 @@ package com.uuay.welcare_catcher.util.api;
 
 import android.util.Log;
 
+import com.uuay.welcare_catcher.GlobalApplication;
 import com.uuay.welcare_catcher.model.Account;
 import com.uuay.welcare_catcher.model.Facility;
 import com.uuay.welcare_catcher.model.RequestLogin;
@@ -36,12 +37,13 @@ public class APIRequester {
 
         try {
             RequestLogin requestLogin = new RequestLogin(email, password);
-            Call<String> call = retrofitAPI.login(requestLogin);
-            Response<String> response = call.execute();
+            Call<Account> call = retrofitAPI.login(requestLogin);
+            Response<Account> response = call.execute();
 
             if (response.isSuccessful()) {
                 // 캐시 저장
                 isLogin = true;
+                GlobalApplication.setCurrentAccount(response.body());
 
                 CookieManager cookieManager = RestfulAdapter.getCookieManager();
                 List<HttpCookie> cookieList = cookieManager.getCookieStore().getCookies();
@@ -49,7 +51,7 @@ public class APIRequester {
                 for(HttpCookie c : cookieList) {
                     localCookie.put(c.getName(), c.getValue());
                 }
-                localCookie.put("email", email);
+                localCookie.put("email", GlobalApplication.getCurrentAccount().getEmail());
                 localCookie.put("isLogin", isLogin+"");
             }
 
