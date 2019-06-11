@@ -28,6 +28,9 @@ public class RestfulAdapter {
     private static final String SERVER_URL = "http://54.180.147.7"; //2부터 url뒤에 /를 입력해야 합니다.
     private static OkHttpClient client;
     private static RetrofitAPI retrofitAPI;
+    private static CookieManager cookieManager;
+
+    public static CookieManager getCookieManager() { return cookieManager; }
 
     public synchronized static RetrofitAPI getInstance() {
         if (retrofitAPI == null) {
@@ -36,8 +39,10 @@ public class RestfulAdapter {
             httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
             //쿠키 메니저의 cookie policy를 변경 합니다.
-            CookieManager cookieManager = new CookieManager();
-            cookieManager.setCookiePolicy(CookiePolicy.ACCEPT_ALL);
+            if (cookieManager == null) {
+                cookieManager = new CookieManager();
+                cookieManager.setCookiePolicy(CookiePolicy.ACCEPT_ALL);
+            }
 
             //OkHttpClient를 생성합니다.
             client = configureClient(new OkHttpClient().newBuilder()) //인증서 무시

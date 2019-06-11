@@ -8,8 +8,11 @@ import com.uuay.welcare_catcher.model.RequestLogin;
 
 import java.io.IOException;
 import java.net.CookieManager;
+import java.net.HttpCookie;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -17,10 +20,14 @@ import retrofit2.Response;
 
 public class APIRequester {
     private RetrofitAPI retrofitAPI;
+    private static Map<String, String> cookies;
 
     public APIRequester() {
         retrofitAPI = RestfulAdapter.getInstance();
+        cookies = new HashMap<String, String>();
     }
+
+    public Map<String, String> getCookies() { return cookies; }
 
     public void join(Account account) {
         Call<String> stringCall = retrofitAPI.join(account);
@@ -37,8 +44,15 @@ public class APIRequester {
 
             if (response.isSuccessful()) {
                 // 캐시 저장
-                CookieManager cookieManager = new CookieManager();
                 isLogin = true;
+
+                CookieManager cookieManager = RestfulAdapter.getCookieManager();
+                List<HttpCookie> cookieList = cookieManager.getCookieStore().getCookies();
+                for(HttpCookie c : cookieList) {
+                    cookies.put(c.getName(), c.getValue());
+                }
+                cookies.put("email", email);
+                cookies.put("isLogin", isLogin+"");
             }
 
         } catch (IOException e) {
