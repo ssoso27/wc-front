@@ -57,8 +57,8 @@ public class ProfileFragment extends Fragment {
         tvNickname.setText(account.getNickname());
         tvEmail.setText(account.getEmail());
         tvDisability.setText(account.getDisability_type() + "장애 " + account.getDisability_grade());
-        tvReceived.setText("받는 중인 혜택");
-        tvToReceive.setText("받는 중인 혜택 중 하나 외 N개");
+//        tvReceived.setText("받는 중인 혜택");
+//        tvToReceive.setText("받는 중인 혜택 중 하나 외 N개");
 
         view.findViewById(R.id.btn_logout).setOnClickListener(new View.OnClickListener() {
             @Override
