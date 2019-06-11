@@ -2,20 +2,28 @@ package com.uuay.welcare_catcher.view;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.uuay.welcare_catcher.GlobalApplication;
 import com.uuay.welcare_catcher.R;
 import com.uuay.welcare_catcher.model.Account;
+import com.uuay.welcare_catcher.util.FragmentChanger;
+import com.uuay.welcare_catcher.util.LocalCookie;
+import com.uuay.welcare_catcher.util.api.APIRequester;
+import com.uuay.welcare_catcher.util.api.RestfulAdapter;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.CookieManager;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -37,15 +45,26 @@ public class ProfileFragment extends Fragment {
         TextView tv_nickname = (TextView) view.findViewById(R.id.tv_nickname);
         TextView tv_disability = (TextView) view.findViewById(R.id.tv_disability);
         TextView tv_email = (TextView) view.findViewById(R.id.tv_email);
-//        final Bitmap[] bitmap = new Bitmap[1];
 
         tv_nickname.setText(account.getNickname());
         tv_email.setText(account.getEmail());
         tv_disability.setText(account.getDisability_type() + "장애 " + account.getDisability_grade());
 
-//        if (current != null) {
-//            bringProfileImg(current, img_profile, bitmap);
-//        }
+        view.findViewById(R.id.btn_logout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CookieManager cookieManager = RestfulAdapter.getCookieManager();
+                LocalCookie localCookie = LocalCookie.getInstance();
+
+                GlobalApplication.setCurrentAccount(null);
+                cookieManager.getCookieStore().removeAll();
+                localCookie.clear();
+
+                Toast.makeText(getContext(), "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show();
+                FragmentChanger.setFragment((AppCompatActivity) getActivity(), new HomeFragment());
+            }
+        });
+
         return view;
     }
 

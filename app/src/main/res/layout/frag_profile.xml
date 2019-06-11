@@ -41,10 +41,20 @@
         android:text="disability"
         android:textSize="20dp" />
 
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="40dp"
+        android:text="로그아웃"
+        android:background="@color/bg_login_button">
+
+    </Button>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
         android:background="@color/guillotine_background_point"
         android:textSize="25dp" />
 
