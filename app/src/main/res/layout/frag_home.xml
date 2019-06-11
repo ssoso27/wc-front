@@ -10,17 +10,17 @@
 
 
     <TextView
-        android:id="@+id/text_aa"
+        android:id="@+id/tv_home_received"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="30dp"
         android:text="받고 있는 혜택"
         android:textSize="24sp"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/tv_home_list1"
         android:layout_width="match_parent"
         android:layout_height="149dp"
         android:layout_marginTop="10dp"
@@ -31,7 +31,7 @@
         android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/tv_home_toreceive"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
@@ -41,7 +41,7 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/tv_home_list2"
         android:layout_width="match_parent"
         android:layout_height="149dp"
         android:layout_marginTop="10dp"
@@ -52,7 +52,7 @@
         android:textSize="20sp" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btn_home_to_sc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"

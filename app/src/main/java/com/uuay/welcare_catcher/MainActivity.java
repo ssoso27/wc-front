@@ -4,8 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -14,13 +12,14 @@ import android.view.MenuItem;
 import com.uuay.welcare_catcher.util.FragmentChanger;
 import com.uuay.welcare_catcher.util.PermissionChecker;
 import com.uuay.welcare_catcher.view.LoginFragment;
+import com.uuay.welcare_catcher.view.SelfcheckFragment;
 import com.uuay.welcare_catcher.view.facilityList.FacilityListFragment;
 import com.uuay.welcare_catcher.view.HomeFragment;
 import com.uuay.welcare_catcher.view.SettingFragment;
 import com.uuay.welcare_catcher.view.welfareList.WelfareListFragment;
 
-public class MainActivity extends AppCompatActivity {
-
+public class MainActivity extends AppCompatActivity implements SelfcheckFragment.setCategoryItemListener {
+    private String gender, lifecycle, type, grade, area;
     private Toolbar tb;
 
     class SelectedListener implements BottomNavigationView.OnNavigationItemSelectedListener {
@@ -52,8 +51,8 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
     }
-
     private static final long RIPPLE_DURATION = 250;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,5 +101,14 @@ public class MainActivity extends AppCompatActivity {
         SelectedListener listener = new SelectedListener();
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation_view);
         bottomNavigationView.setOnNavigationItemSelectedListener(listener);
+    }
+
+    @Override
+    public void setCategoryItem(String gender, String lifecycle, String type, String grade, String area) {
+        this.gender = gender;
+        this.lifecycle = lifecycle;
+        this.type = type;
+        this.grade = grade;
+        this.area = area;
     }
 }

@@ -1,62 +1,52 @@
 package com.uuay.welcare_catcher.view;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.view.KeyEvent;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.uuay.welcare_catcher.R;
 
 public class SelfcheckFragment extends Fragment {
-    String gender, type, grade, area;
-    int age;
+    String gender, lifecycle, type, grade, area;
+    private AppCompatActivity activity;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.frag_selfcheck, container, false);
 
         Spinner typeSpinner = (Spinner) view.findViewById(R.id.spinner_disability_type);
-        ArrayAdapter typeAdapter = setSpinner(typeSpinner);
-
         Spinner gradeSpinner = (Spinner) view.findViewById(R.id.spinner_disability_grade);
-        ArrayAdapter gradeAdapter = setSpinner(gradeSpinner);
-
         Spinner areaSpinner = (Spinner) view.findViewById(R.id.spinner_area);
-        ArrayAdapter areaAdapter = setSpinner(areaSpinner);
-
+        Spinner lifecycleSpinner = (Spinner) view.findViewById(R.id.spinner_agegroup);
         RadioGroup rgGender = (RadioGroup) view.findViewById(R.id.rg_gender);
+        Button btnEnd = (Button) view.findViewById(R.id.btn_selfcheck_end);
+        AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
+
+        ArrayAdapter typeAdapter = setSpinner(typeSpinner);
+        ArrayAdapter gradeAdapter = setSpinner(gradeSpinner);
+        ArrayAdapter areaAdapter = setSpinner(areaSpinner);
+        ArrayAdapter lifecycleAdapter = setSpinner(lifecycleSpinner);
+        setAlert(alert);
 
         rgGenderClick(rgGender);
-
-        EditText etAge = (EditText) view.findViewById(R.id.et_age);
-
-        etAgeClick(etAge);
-
         typeSelected(typeSpinner);
         gradeSelected(gradeSpinner);
         areaSelected(areaSpinner);
-//        Button btnAddQuestion = (Button) view.findViewById(R.id.btn_add_question);
-//        btnAddQuestion.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
+        ageSelected(lifecycleSpinner);
 
-        Button btnEnd = (Button) view.findViewById(R.id.btn_selfcheck_end);
-        btnClick(btnEnd);
+        btnClick(btnEnd, alert);
 
         return view;
     }
@@ -67,45 +57,20 @@ public class SelfcheckFragment extends Fragment {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 RadioButton radioButton = (RadioButton) getView().findViewById(checkedId);
                 gender = radioButton.getText().toString();
-                Toast.makeText(SelfcheckFragment.super.getContext(), "성별 : " + gender,
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-    public void etAgeClick(EditText editText) {
-        final EditText fEditText = editText;
-        editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_SEARCH ||
-                        actionId == EditorInfo.IME_ACTION_DONE ||
-                        event.getAction() == KeyEvent.ACTION_DOWN &&
-                                event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
-                    age = Integer.valueOf(fEditText.getText().toString());
-                    Toast.makeText(SelfcheckFragment.super.getContext(), "나이 : " + age,
-                            Toast.LENGTH_SHORT).show();
-                    return true;
-                }
-                return false;
             }
         });
     }
 
     public void typeSelected(Spinner spinner) {
-            final Spinner fSpinner = spinner;
-            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    type = fSpinner.getSelectedItem().toString();
-                    Toast.makeText(SelfcheckFragment.super.getContext(), "장애유형 : " + type,
-                            Toast.LENGTH_SHORT).show();
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
-
-                }
-            });
+        final Spinner fSpinner = spinner;
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                type = fSpinner.getSelectedItem().toString();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) { }
+        });
     }
 
     public void gradeSelected(Spinner spinner) {
@@ -114,14 +79,9 @@ public class SelfcheckFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 grade = fSpinner.getSelectedItem().toString();
-                Toast.makeText(SelfcheckFragment.super.getContext(), "장애등급 : " + grade,
-                        Toast.LENGTH_SHORT).show();
             }
-
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
+            public void onNothingSelected(AdapterView<?> parent) { }
         });
     }
 
@@ -131,24 +91,21 @@ public class SelfcheckFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 area = fSpinner.getSelectedItem().toString();
-                Toast.makeText(SelfcheckFragment.super.getContext(), "거주지역 : " + area,
-                        Toast.LENGTH_SHORT).show();
             }
-
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
+            public void onNothingSelected(AdapterView<?> parent) { }
         });
     }
 
-    // 클래스명 짓는 거 ...
-    public void btnClick(Button btn) {
-        btn.setOnClickListener(new View.OnClickListener() {
+    public void ageSelected(Spinner spinner) {
+        final Spinner fSpinner = spinner;
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onClick(View v) {
-
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                lifecycle = fSpinner.getSelectedItem().toString();
             }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) { }
         });
     }
 
@@ -176,8 +133,54 @@ public class SelfcheckFragment extends Fragment {
                 spinner.setAdapter(arrAdapter);
                 return arrAdapter;
 
+            case R.id.spinner_agegroup:
+                arrAdapter = ArrayAdapter.createFromResource(getContext(),
+                        R.array.agegroup, android.R.layout.simple_spinner_item);
+                arrAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinner.setAdapter(arrAdapter);
+                return arrAdapter;
+
             default:
                 return arrAdapter;
+        }
+    }
+
+    // 클래스명 짓는 거 ...
+    public void btnClick(Button btn, AlertDialog.Builder a) {
+        final AlertDialog.Builder alert = a;
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alert.setMessage(
+                                "성별 " + gender + '\n' +
+                                "연령대 " + lifecycle + '\n' +
+                                "장애유형 " + type + '\n' +
+                                "장애등급 " + grade + '\n' +
+                                "거주지역 " + area);
+                alert.show();
+                ((setCategoryItemListener)activity).setCategoryItem(gender, lifecycle, type, grade, area);
+            }
+        });
+    }
+
+    public void setAlert(AlertDialog.Builder a) {
+        a.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+    }
+
+    public interface setCategoryItemListener {
+        void setCategoryItem(String gender, String lifecycle, String type, String grade, String area);
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if(context != null && context instanceof AppCompatActivity) {
+            this.activity = (AppCompatActivity)context;
         }
     }
 }
