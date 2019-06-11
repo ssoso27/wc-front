@@ -2,58 +2,79 @@ package com.uuay.welcare_catcher.view;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.uuay.welcare_catcher.GlobalApplication;
 import com.uuay.welcare_catcher.R;
 import com.uuay.welcare_catcher.model.Account;
+import com.uuay.welcare_catcher.util.FragmentChanger;
+import com.uuay.welcare_catcher.util.LocalCookie;
+import com.uuay.welcare_catcher.util.api.APIRequester;
+import com.uuay.welcare_catcher.util.api.RestfulAdapter;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.CookieManager;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
 /*
-AccountFragmentInfo ??
+ProfileFragment ??
 클래스명을 추천받습니다.
  */
-public class AccountFragmentInfo extends Fragment {
+public class ProfileFragment extends Fragment {
     private TextView tvNickname, tvDisability, tvEmail, tvReceived, tvToReceive;
-    public AccountFragmentInfo() {
+
+    public ProfileFragment() {
 
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.frag_account_info, container, false);
-        final Account current = GlobalApplication.getCurrentAccount();
+        View view = inflater.inflate(R.layout.frag_profile, container, false);
+        final Account account = GlobalApplication.getCurrentAccount();
 
-        tvNickname = (TextView) view.findViewById(R.id.tv_account_nickname);
-        tvDisability = (TextView) view.findViewById(R.id.tv_account_disability);
-        tvEmail = (TextView) view.findViewById(R.id.tv_account_email);
-        tvReceived = (TextView) view.findViewById(R.id.tv_account_received);
-        tvToReceive = (TextView) view.findViewById(R.id.tv_account_toreceive);
-        ImageView ivProfile = (ImageView) view.findViewById(R.id.iv_account_profile);
-        ImageButton imagebtn = (ImageButton) view.findViewById(R.id.imageButton);
-        final Bitmap[] bitmap = new Bitmap[1];
+        tvNickname = (TextView) view.findViewById(R.id.tv_nickname);
+        tvDisability = (TextView) view.findViewById(R.id.tv_disability);
+        tvEmail = (TextView) view.findViewById(R.id.tv_email);
+//        tvReceived = (TextView) view.findViewById(R.id.tv_account_received);
+//        tvToReceive = (TextView) view.findViewById(R.id.tv_account_toreceive);
+//        ImageView ivProfile = (ImageView) view.findViewById(R.id.iv_account_profile);
+//        ImageButton imagebtn = (ImageButton) view.findViewById(R.id.imageButton);
+//        final Bitmap[] bitmap = new Bitmap[1];
 
-        tvNickname.setText("닉네임");
-        tvDisability.setText("장애유형 장애등급");
-        tvEmail.setText("이메일");
+        tvNickname.setText(account.getNickname());
+        tvEmail.setText(account.getEmail());
+        tvDisability.setText(account.getDisability_type() + "장애 " + account.getDisability_grade());
         tvReceived.setText("받는 중인 혜택");
         tvToReceive.setText("받는 중인 혜택 중 하나 외 N개");
 
-        if (current != null) {
-            bringProfileImg(current, ivProfile, bitmap);
-        }
+        view.findViewById(R.id.btn_logout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CookieManager cookieManager = RestfulAdapter.getCookieManager();
+                LocalCookie localCookie = LocalCookie.getInstance();
+
+                GlobalApplication.setCurrentAccount(null);
+                cookieManager.getCookieStore().removeAll();
+                localCookie.clear();
+
+                Toast.makeText(getContext(), "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show();
+                FragmentChanger.setFragment((AppCompatActivity) getActivity(), new HomeFragment());
+            }
+        });
+
         return view;
     }
 

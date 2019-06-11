@@ -30,5 +30,5 @@ public interface RetrofitAPI {
 
     @Headers("Content-Type: application/json")
     @POST("accounts/login")
-    Call<String> login(@Body RequestLogin requestLogin);
+    Call<Account> login(@Body RequestLogin requestLogin);
 }

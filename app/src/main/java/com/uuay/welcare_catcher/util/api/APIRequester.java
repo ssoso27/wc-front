@@ -2,9 +2,11 @@ package com.uuay.welcare_catcher.util.api;
 
 import android.util.Log;
 
+import com.uuay.welcare_catcher.GlobalApplication;
 import com.uuay.welcare_catcher.model.Account;
 import com.uuay.welcare_catcher.model.Facility;
 import com.uuay.welcare_catcher.model.RequestLogin;
+import com.uuay.welcare_catcher.util.LocalCookie;
 
 import java.io.IOException;
 import java.net.CookieManager;
@@ -20,14 +22,10 @@ import retrofit2.Response;
 
 public class APIRequester {
     private RetrofitAPI retrofitAPI;
-    private static Map<String, String> cookies;
 
     public APIRequester() {
         retrofitAPI = RestfulAdapter.getInstance();
-        cookies = new HashMap<String, String>();
     }
-
-    public Map<String, String> getCookies() { return cookies; }
 
     public void join(Account account) {
         Call<String> stringCall = retrofitAPI.join(account);
@@ -39,20 +37,22 @@ public class APIRequester {
 
         try {
             RequestLogin requestLogin = new RequestLogin(email, password);
-            Call<String> call = retrofitAPI.login(requestLogin);
-            Response<String> response = call.execute();
+            Call<Account> call = retrofitAPI.login(requestLogin);
+            Response<Account> response = call.execute();
 
             if (response.isSuccessful()) {
                 // 캐시 저장
                 isLogin = true;
+                GlobalApplication.setCurrentAccount(response.body());
 
                 CookieManager cookieManager = RestfulAdapter.getCookieManager();
                 List<HttpCookie> cookieList = cookieManager.getCookieStore().getCookies();
+                LocalCookie localCookie = LocalCookie.getInstance();
                 for(HttpCookie c : cookieList) {
-                    cookies.put(c.getName(), c.getValue());
+                    localCookie.put(c.getName(), c.getValue());
                 }
-                cookies.put("email", email);
-                cookies.put("isLogin", isLogin+"");
+                localCookie.put("email", GlobalApplication.getCurrentAccount().getEmail());
+                localCookie.put("isLogin", isLogin+"");
             }
 
         } catch (IOException e) {
