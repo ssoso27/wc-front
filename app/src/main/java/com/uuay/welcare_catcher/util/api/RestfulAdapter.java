@@ -1,6 +1,7 @@
 package com.uuay.welcare_catcher.util.api;
 
-import com.uuay.welcare_catcher.util.api.RetrofitAPI;
+import android.annotation.SuppressLint;
+import android.util.Log;
 
 import java.net.CookieManager;
 import java.net.CookiePolicy;
@@ -68,11 +69,13 @@ public class RestfulAdapter {
                 return null;
             }
 
+            @SuppressLint("TrustAllX509TrustManager")
             @Override
             public void checkServerTrusted(final X509Certificate[] chain,
                                            final String authType) {
             }
 
+            @SuppressLint("TrustAllX509TrustManager")
             @Override
             public void checkClientTrusted(final X509Certificate[] chain,
                                            final String authType) {
@@ -89,13 +92,16 @@ public class RestfulAdapter {
 
         try {
             final HostnameVerifier hostnameVerifier = new HostnameVerifier() {
+                @SuppressLint("BadHostnameVerifier")
                 @Override
                 public boolean verify(final String hostname, final SSLSession session) {
                     return true;
                 }
             };
 
-            builder.sslSocketFactory(ctx.getSocketFactory()).hostnameVerifier(hostnameVerifier);
+            if (ctx != null) {
+                builder.sslSocketFactory(ctx.getSocketFactory(), (X509TrustManager) certs[0]).hostnameVerifier(hostnameVerifier);
+            }
         } catch (final Exception e) {
             e.printStackTrace();
         }

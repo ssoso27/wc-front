@@ -1,20 +1,18 @@
 package com.uuay.welcare_catcher.util.api;
 
 import android.util.Log;
-import android.widget.Toast;
 
 import com.uuay.welcare_catcher.model.Account;
 import com.uuay.welcare_catcher.model.Facility;
 
 import java.io.IOException;
+import java.net.CookieManager;
 import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class APIRequester {
     private RetrofitAPI retrofitAPI;
@@ -26,6 +24,21 @@ public class APIRequester {
     public void join(Account account) {
         Call<String> stringCall = retrofitAPI.join(account);
         stringCall.enqueue(stringCallback);
+    }
+
+    public void login(String email, String password) {
+        try {
+            Call<String> call = retrofitAPI.login(email, password);
+            Response<String> response = call.execute();
+
+            if (response.isSuccessful()) {
+                // 캐시 저장
+                CookieManager cookieManager = new CookieManager();
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public boolean duplicateEmail(String email) {

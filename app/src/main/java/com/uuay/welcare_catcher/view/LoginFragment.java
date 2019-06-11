@@ -1,6 +1,7 @@
 package com.uuay.welcare_catcher.view;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -10,16 +11,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.kakao.auth.Session;
 import com.kakao.usermgmt.LoginButton;
 import com.uuay.welcare_catcher.MainActivity;
 import com.uuay.welcare_catcher.R;
 import com.uuay.welcare_catcher.util.FragmentChanger;
+import com.uuay.welcare_catcher.util.api.APIRequester;
 import com.uuay.welcare_catcher.util.kakao.SessionCallback;
 
 public class LoginFragment extends Fragment {
     private SessionCallback callback;
+
+    private EditText etEmail;
+    private EditText etPassword;
+
     public LoginFragment() {
 
     }
@@ -51,6 +59,10 @@ public class LoginFragment extends Fragment {
 
         ClickListener listener = new ClickListener();
         view.findViewById(R.id.btn_joinpage).setOnClickListener(listener);
+        view.findViewById(R.id.btn_login).setOnClickListener(listener);
+
+        etEmail = view.findViewById(R.id.et_email);
+        etPassword = view.findViewById(R.id.et_password);
 
         return view;
     }
@@ -68,7 +80,37 @@ public class LoginFragment extends Fragment {
             switch (v.getId()) {
                 case R.id.btn_joinpage:
                     FragmentChanger.setFragment((AppCompatActivity) getActivity(), new JoinFragment());
+                    break;
+
+                case R.id.btn_login:
+                    String email = etEmail.getText().toString();
+                    String password = etPassword.getText().toString();
+                    new LoginAsync().execute(email, password);
+                    break;
+
+                default:
+                    break;
             }
+        }
+    }
+
+    class LoginAsync extends AsyncTask<Object, Object, Object> {
+
+        @Override
+        protected Object doInBackground(Object... objects) {
+            APIRequester apiRequester = new APIRequester();
+            String email = (String) objects[0];
+            String password = (String) objects[1];
+
+            apiRequester.login(email, password);
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Object o) {
+            Toast.makeText(getContext(), "로그인이 완료되었습니다.", Toast.LENGTH_SHORT).show();
+            FragmentChanger.setFragment((AppCompatActivity) getActivity(), new LoginFragment());
         }
     }
 }

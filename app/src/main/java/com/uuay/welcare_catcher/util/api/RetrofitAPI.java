@@ -26,4 +26,8 @@ public interface RetrofitAPI {
 
     @GET("accounts/duplicate-email")
     Call<String> duplicateEmail(@Query("email") String email);
+
+    @Headers("Content-Type: application/json")
+    @POST("accounts/login")
+    Call<String> login(@Body String email, @Body String password);
 }
