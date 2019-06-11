@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,10 +26,18 @@ import java.util.List;
 public class WelfareListFragment extends Fragment {
 
     private ListView lvServices;
+    private EditText etSearch;
+
     private APIRequester apiRequester;
+    private String keyword;
+    private int size;
+    private int page;
 
     public WelfareListFragment() {
         apiRequester = new APIRequester();
+        keyword = "";
+        size = 10;
+        page = 1;
     }
 
     @Override
@@ -41,14 +50,23 @@ public class WelfareListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        View view = inflater.inflate(R.layout.frag_welfare_list, null) ;
+        final View view = inflater.inflate(R.layout.frag_welfare_list, null) ;
+
+        new ServiceListAsync().execute(keyword, size, page);
 
         WelfareListAdapter adapter = new WelfareListAdapter();
-
         lvServices = (ListView) view.findViewById(R.id.lv_services);
         lvServices.setAdapter(adapter);
 
-        new ServiceListAsync().execute("특별", 1, 1);
+        etSearch = view.findViewById(R.id.et_search);
+        view.findViewById(R.id.btn_search).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String keyword = etSearch.getText().toString();
+                new ServiceListAsync().execute(keyword, size, page);
+            }
+        });
+
         return view;
     }
 
