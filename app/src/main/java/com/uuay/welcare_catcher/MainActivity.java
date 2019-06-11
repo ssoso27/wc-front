@@ -16,13 +16,11 @@ import com.uuay.welcare_catcher.util.PermissionChecker;
 import com.uuay.welcare_catcher.view.HomeFragment;
 import com.uuay.welcare_catcher.view.LoginFragment;
 import com.uuay.welcare_catcher.view.ProfileFragment;
-import com.uuay.welcare_catcher.view.SelfcheckFragment;
 import com.uuay.welcare_catcher.view.SettingFragment;
 import com.uuay.welcare_catcher.view.facilityList.FacilityListFragment;
 import com.uuay.welcare_catcher.view.welfareList.WelfareListFragment;
 
-public class MainActivity extends AppCompatActivity implements SelfcheckFragment.setCategoryItemListener {
-    private String gender, lifecycle, type, grade, area;
+public class MainActivity extends AppCompatActivity {
     private Toolbar tb;
 
     class SelectedListener implements BottomNavigationView.OnNavigationItemSelectedListener {
@@ -113,12 +111,5 @@ public class MainActivity extends AppCompatActivity implements SelfcheckFragment
         bottomNavigationView.setOnNavigationItemSelectedListener(listener);
     }
 
-    @Override
-    public void setCategoryItem(String gender, String lifecycle, String type, String grade, String area) {
-        this.gender = gender;
-        this.lifecycle = lifecycle;
-        this.type = type;
-        this.grade = grade;
-        this.area = area;
-    }
+
 }

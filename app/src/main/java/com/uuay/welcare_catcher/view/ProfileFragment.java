@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,6 +33,8 @@ ProfileFragment ??
 클래스명을 추천받습니다.
  */
 public class ProfileFragment extends Fragment {
+    private TextView tvNickname, tvDisability, tvEmail, tvReceived, tvToReceive;
+
     public ProfileFragment() {
 
     }
@@ -42,13 +45,20 @@ public class ProfileFragment extends Fragment {
         View view = inflater.inflate(R.layout.frag_profile, container, false);
         final Account account = GlobalApplication.getCurrentAccount();
 
-        TextView tv_nickname = (TextView) view.findViewById(R.id.tv_nickname);
-        TextView tv_disability = (TextView) view.findViewById(R.id.tv_disability);
-        TextView tv_email = (TextView) view.findViewById(R.id.tv_email);
+        tvNickname = (TextView) view.findViewById(R.id.tv_nickname);
+        tvDisability = (TextView) view.findViewById(R.id.tv_disability);
+        tvEmail = (TextView) view.findViewById(R.id.tv_email);
+//        tvReceived = (TextView) view.findViewById(R.id.tv_account_received);
+//        tvToReceive = (TextView) view.findViewById(R.id.tv_account_toreceive);
+//        ImageView ivProfile = (ImageView) view.findViewById(R.id.iv_account_profile);
+//        ImageButton imagebtn = (ImageButton) view.findViewById(R.id.imageButton);
+//        final Bitmap[] bitmap = new Bitmap[1];
 
-        tv_nickname.setText(account.getNickname());
-        tv_email.setText(account.getEmail());
-        tv_disability.setText(account.getDisability_type() + "장애 " + account.getDisability_grade());
+        tvNickname.setText(account.getNickname());
+        tvEmail.setText(account.getEmail());
+        tvDisability.setText(account.getDisability_type() + "장애 " + account.getDisability_grade());
+        tvReceived.setText("받는 중인 혜택");
+        tvToReceive.setText("받는 중인 혜택 중 하나 외 N개");
 
         view.findViewById(R.id.btn_logout).setOnClickListener(new View.OnClickListener() {
             @Override
