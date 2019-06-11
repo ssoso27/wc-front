@@ -33,4 +33,8 @@ public class LocalCookie {
     public Boolean isEmpty() {
         return cookies.isEmpty();
     }
+
+    public void clear() {
+        cookies.clear();
+    }
 }
