@@ -63,16 +63,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"
-            android:text="나이가 어떻게 되시나요?" />
+            android:text="연령대를 선택해 주세요." />
 
-        <EditText
-            android:id="@+id/et_age"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:numeric="integer"
-            android:hint="숫자만 입력해주세요"
-            android:imeOptions="actionSearch"
-            android:orientation="horizontal" />
+        <Spinner
+            android:id="@+id/spinner_agegroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 
