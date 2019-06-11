@@ -80,8 +80,8 @@ public class WelfareListFragment extends Fragment {
                         service.getName(),
                         service.getApplication_agency(),
                         service.getApplication_method(),
-                        service.getUrl(),
-                        service.getRegistedAt());
+                        service.getRegistedAt()
+                );
             }
         }
 
