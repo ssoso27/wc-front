@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.uuay.welcare_catcher.model.Account;
 import com.uuay.welcare_catcher.model.Facility;
+import com.uuay.welcare_catcher.model.RequestLogin;
 
 import java.io.IOException;
 import java.net.CookieManager;
@@ -26,19 +27,25 @@ public class APIRequester {
         stringCall.enqueue(stringCallback);
     }
 
-    public void login(String email, String password) {
+    public boolean login(String email, String password) {
+        boolean isLogin = false;
+
         try {
-            Call<String> call = retrofitAPI.login(email, password);
+            RequestLogin requestLogin = new RequestLogin(email, password);
+            Call<String> call = retrofitAPI.login(requestLogin);
             Response<String> response = call.execute();
 
             if (response.isSuccessful()) {
                 // 캐시 저장
                 CookieManager cookieManager = new CookieManager();
+                isLogin = true;
             }
 
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        return isLogin;
     }
 
     public boolean duplicateEmail(String email) {

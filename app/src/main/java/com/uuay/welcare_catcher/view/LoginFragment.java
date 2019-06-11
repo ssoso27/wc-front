@@ -94,23 +94,26 @@ public class LoginFragment extends Fragment {
         }
     }
 
-    class LoginAsync extends AsyncTask<Object, Object, Object> {
+    class LoginAsync extends AsyncTask<Object, Object, Boolean> {
 
         @Override
-        protected Object doInBackground(Object... objects) {
+        protected Boolean doInBackground(Object... objects) {
             APIRequester apiRequester = new APIRequester();
             String email = (String) objects[0];
             String password = (String) objects[1];
 
-            apiRequester.login(email, password);
-
-            return null;
+            return apiRequester.login(email, password);
         }
 
         @Override
-        protected void onPostExecute(Object o) {
-            Toast.makeText(getContext(), "로그인이 완료되었습니다.", Toast.LENGTH_SHORT).show();
-            FragmentChanger.setFragment((AppCompatActivity) getActivity(), new LoginFragment());
+        protected void onPostExecute(Boolean isLogin) {
+            if (isLogin) {
+                Toast.makeText(getContext(), "로그인이 완료되었습니다.", Toast.LENGTH_SHORT).show();
+                FragmentChanger.setFragment((AppCompatActivity) getActivity(), new HomeFragment());
+            } else {
+                Toast.makeText(getContext(), "로그인에 실패하였습니다.", Toast.LENGTH_SHORT).show();
+            }
+
         }
     }
 }
