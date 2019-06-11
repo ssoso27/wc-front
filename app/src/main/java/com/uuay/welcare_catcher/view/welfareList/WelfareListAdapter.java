@@ -42,11 +42,11 @@ public class WelfareListAdapter extends BaseAdapter implements Filterable {
         }
 
         // 화면에 표시될 View(Layout이 inflate된)으로부터 위젯에 대한 참조 획득
-        TextView titleTextView  = (TextView) convertView.findViewById(R.id.textView1) ;
-        TextView descTextView   = (TextView) convertView.findViewById(R.id.textView2) ;
-        TextView categoryTextView = (TextView) convertView.findViewById(R.id.textView3) ;
-        TextView ratingTextView = (TextView) convertView.findViewById(R.id.textView4) ;
-        TextView typeTextView   = (TextView) convertView.findViewById(R.id.textView5) ;
+        TextView titleTextView  = (TextView) convertView.findViewById(R.id.tv_account_nickname) ;
+        TextView descTextView   = (TextView) convertView.findViewById(R.id.tv_account_disability) ;
+        TextView categoryTextView = (TextView) convertView.findViewById(R.id.tv_account_email) ;
+        TextView ratingTextView = (TextView) convertView.findViewById(R.id.tv_account_received) ;
+        TextView typeTextView   = (TextView) convertView.findViewById(R.id.tv_account_toreceive) ;
 
         // Data Set(listViewItemList)에서 position에 위치한 데이터 참조 획득
         WelfareListItem listViewItem = listItemList.get(position);

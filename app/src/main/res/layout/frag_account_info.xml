@@ -13,7 +13,7 @@
         android:padding="10dp">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/iv_account_profile"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_alignParentTop="true"
@@ -21,37 +21,37 @@
             android:src="@drawable/ic_profile_sample" />
 
         <TextView
-            android:id="@+id/textView1"
+            android:id="@+id/tv_account_nickname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_toRightOf="@id/imageView"
+            android:layout_toRightOf="@id/iv_account_profile"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:textSize="25dp"
-            android:text="@+id/textView1" />
+            android:text="@+id/tv_account_nickname" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/tv_account_disability"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@id/textView1"
-            android:layout_toRightOf="@id/imageView"
+            android:layout_alignTop="@id/tv_account_nickname"
+            android:layout_toRightOf="@id/iv_account_profile"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="40dp"
             android:textSize="25dp"
-            android:text="@+id/textView2" />
+            android:text="@+id/tv_account_disability" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/tv_account_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@id/textView2"
-            android:layout_toRightOf="@id/imageView"
+            android:layout_alignTop="@id/tv_account_disability"
+            android:layout_toRightOf="@id/iv_account_profile"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="40dp"
             android:textSize="25dp"
-            android:text="@+id/textView3" />
+            android:text="@+id/tv_account_email" />
 
         <ImageButton
             android:id="@+id/imageButton"
@@ -72,23 +72,23 @@
         android:padding="10dp">
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/tv_account_received"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_marginTop="40dp"
             android:background="@color/guillotine_background_point"
-            android:text="@+id/textView4"
+            android:text="@+id/tv_account_received"
             android:textSize="25dp" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/tv_account_toreceive"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@id/textView4"
+            android:layout_alignTop="@id/tv_account_received"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="40dp"
-            android:text="@+id/textView5"
+            android:text="@+id/tv_account_toreceive"
             android:textSize="25dp" />
 
     </RelativeLayout>

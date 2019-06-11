@@ -12,8 +12,8 @@ import com.uuay.welcare_catcher.R;
 import com.uuay.welcare_catcher.util.FragmentChanger;
 
 public class HomeFragment extends Fragment {
-    Fragment sf = new SelfcheckFragment();
-
+    SelfcheckFragment sf = new SelfcheckFragment();
+    Fragment testF = new TestFragment();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

@@ -25,6 +25,7 @@ AccountFragmentInfo ??
 클래스명을 추천받습니다.
  */
 public class AccountFragmentInfo extends Fragment {
+    private TextView tvNickname, tvDisability, tvEmail, tvReceived, tvToReceive;
     public AccountFragmentInfo() {
 
     }
@@ -35,23 +36,23 @@ public class AccountFragmentInfo extends Fragment {
         View view = inflater.inflate(R.layout.frag_account_info, container, false);
         final Account current = GlobalApplication.getCurrentAccount();
 
-        TextView textView1 = (TextView) view.findViewById(R.id.textView1);
-        TextView textView2 = (TextView) view.findViewById(R.id.textView2);
-        TextView textView3 = (TextView) view.findViewById(R.id.textView3);
-        TextView textView4 = (TextView) view.findViewById(R.id.textView4);
-        TextView textView5 = (TextView) view.findViewById(R.id.textView5);
-        ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
+        tvNickname = (TextView) view.findViewById(R.id.tv_account_nickname);
+        tvDisability = (TextView) view.findViewById(R.id.tv_account_disability);
+        tvEmail = (TextView) view.findViewById(R.id.tv_account_email);
+        tvReceived = (TextView) view.findViewById(R.id.tv_account_received);
+        tvToReceive = (TextView) view.findViewById(R.id.tv_account_toreceive);
+        ImageView ivProfile = (ImageView) view.findViewById(R.id.iv_account_profile);
         ImageButton imagebtn = (ImageButton) view.findViewById(R.id.imageButton);
         final Bitmap[] bitmap = new Bitmap[1];
 
-        textView1.setText("닉네임");
-        textView2.setText("장애유형 장애등급");
-        textView3.setText("이메일");
-        textView4.setText("받는 중인 혜택");
-        textView5.setText("받는 중인 혜택 중 하나 외 N개");
+        tvNickname.setText("닉네임");
+        tvDisability.setText("장애유형 장애등급");
+        tvEmail.setText("이메일");
+        tvReceived.setText("받는 중인 혜택");
+        tvToReceive.setText("받는 중인 혜택 중 하나 외 N개");
 
         if (current != null) {
-            bringProfileImg(current, imageView, bitmap);
+            bringProfileImg(current, ivProfile, bitmap);
         }
         return view;
     }
