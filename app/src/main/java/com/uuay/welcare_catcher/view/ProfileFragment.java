@@ -32,25 +32,20 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.frag_profile, container, false);
-        final Account current = GlobalApplication.getCurrentAccount();
+        final Account account = GlobalApplication.getCurrentAccount();
 
         TextView tv_nickname = (TextView) view.findViewById(R.id.tv_nickname);
         TextView tv_disability = (TextView) view.findViewById(R.id.tv_disability);
         TextView tv_email = (TextView) view.findViewById(R.id.tv_email);
-//        TextView textView4 = (TextView) view.findViewById(R.id.textView4);
-//        TextView textView5 = (TextView) view.findViewById(R.id.textView5);
-        ImageView img_profile = (ImageView) view.findViewById(R.id.img_profile);
-        final Bitmap[] bitmap = new Bitmap[1];
+//        final Bitmap[] bitmap = new Bitmap[1];
 
-        tv_nickname.setText("닉네임");
-        tv_disability.setText("장애유형 장애등급");
-        tv_email.setText("이메일");
-//        textView4.setText("받는 중인 혜택");
-//        textView5.setText("받는 중인 혜택 중 하나 외 N개");
+        tv_nickname.setText(account.getNickname());
+        tv_email.setText(account.getEmail());
+        tv_disability.setText(account.getDisability_type() + "장애 " + account.getDisability_grade());
 
-        if (current != null) {
-            bringProfileImg(current, img_profile, bitmap);
-        }
+//        if (current != null) {
+//            bringProfileImg(current, img_profile, bitmap);
+//        }
         return view;
     }
 
