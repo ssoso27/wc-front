@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:paddingTop="10dp"
@@ -9,13 +9,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/gray0"
+    android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.uuay.welcare_catcher.view.welfareList.WelfareListFragment"
     tools:showIn="@layout/frag_welfare_list">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:paddingTop="30dp"
         android:paddingBottom="30dp"
         android:paddingLeft="30dp"
@@ -67,28 +68,41 @@
 
     </RelativeLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingTop="200dp"
-        android:paddingBottom="8dp"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp">
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/textview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@+id/textview"
-            android:layout_alignParentTop="true" />
+        <EditText
+            android:id="@+id/et_search"
+            android:layout_width="330dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:textColor="@color/gray6"
+            android:textSize="13dp"
+            android:text="검색" />
+
+        <Button
+            android:id="@+id/btn_search"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/ic_search" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/frame_service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
 
         <ListView
-            android:id="@+id/listView"
-            android:layout_width="395dp"
-            android:layout_height="441dp"
-            android:layout_marginTop="30dp"/>
-
-    </RelativeLayout>
+            android:id="@+id/lv_services"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
 
 
-</RelativeLayout>
+</LinearLayout>

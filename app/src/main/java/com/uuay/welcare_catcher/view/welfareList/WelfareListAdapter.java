@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.uuay.welcare_catcher.R;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class WelfareListAdapter extends BaseAdapter implements Filterable {
 
@@ -72,14 +73,14 @@ public class WelfareListAdapter extends BaseAdapter implements Filterable {
         return listItemList.get(position) ;
     }
 
-    public void addItem(String title, String desc, String category, String rating, String type) {
+    public void addItem(String title, String desc, String category, String rating, Date registedAt) {
         WelfareListItem item = new WelfareListItem();
 
         item.setTitle(title);
         item.setDesc(desc);
         item.setCategory(category);
         item.setRating(rating);
-        item.setType(type);
+        item.setType("ttt");
 
         listItemList.add(item);
     }

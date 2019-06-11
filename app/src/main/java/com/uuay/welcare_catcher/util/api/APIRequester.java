@@ -6,6 +6,7 @@ import com.uuay.welcare_catcher.GlobalApplication;
 import com.uuay.welcare_catcher.model.Account;
 import com.uuay.welcare_catcher.model.Facility;
 import com.uuay.welcare_catcher.model.RequestLogin;
+import com.uuay.welcare_catcher.model.WelfareService;
 import com.uuay.welcare_catcher.util.LocalCookie;
 
 import java.io.IOException;
@@ -118,4 +119,28 @@ public class APIRequester {
             t.printStackTrace();
         }
     };
+
+    public ArrayList<WelfareService> findServices(String keyword, int size, int page) {
+        ArrayList<WelfareService> services = null;
+
+        try {
+            Call<List<WelfareService>> call = retrofitAPI.findServices(keyword, size, page);
+            Response<List<WelfareService>> response = call.execute();
+
+            if(response.isSuccessful()) {
+                ArrayList<WelfareService> list = (ArrayList<WelfareService>) response.body();
+                if (list != null) {
+                    services = list;
+                    Log.d("궁금해", list.get(0).getName());
+                    Log.d("2", list.get(0).getRegistedAt().toString());
+                }
+            }
+
+            return services;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
 }
