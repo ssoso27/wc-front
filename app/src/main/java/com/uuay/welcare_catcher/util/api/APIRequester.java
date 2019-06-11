@@ -1,31 +1,65 @@
 package com.uuay.welcare_catcher.util.api;
 
 import android.util.Log;
-import android.widget.Toast;
 
 import com.uuay.welcare_catcher.model.Account;
 import com.uuay.welcare_catcher.model.Facility;
+import com.uuay.welcare_catcher.model.RequestLogin;
 
 import java.io.IOException;
+import java.net.CookieManager;
+import java.net.HttpCookie;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class APIRequester {
     private RetrofitAPI retrofitAPI;
+    private static Map<String, String> cookies;
 
     public APIRequester() {
-        this.setRetrofit();
+        retrofitAPI = RestfulAdapter.getInstance();
+        cookies = new HashMap<String, String>();
     }
+
+    public Map<String, String> getCookies() { return cookies; }
 
     public void join(Account account) {
         Call<String> stringCall = retrofitAPI.join(account);
         stringCall.enqueue(stringCallback);
+    }
+
+    public boolean login(String email, String password) {
+        boolean isLogin = false;
+
+        try {
+            RequestLogin requestLogin = new RequestLogin(email, password);
+            Call<String> call = retrofitAPI.login(requestLogin);
+            Response<String> response = call.execute();
+
+            if (response.isSuccessful()) {
+                // 캐시 저장
+                isLogin = true;
+
+                CookieManager cookieManager = RestfulAdapter.getCookieManager();
+                List<HttpCookie> cookieList = cookieManager.getCookieStore().getCookies();
+                for(HttpCookie c : cookieList) {
+                    cookies.put(c.getName(), c.getValue());
+                }
+                cookies.put("email", email);
+                cookies.put("isLogin", isLogin+"");
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return isLogin;
     }
 
     public boolean duplicateEmail(String email) {
@@ -84,13 +118,4 @@ public class APIRequester {
             t.printStackTrace();
         }
     };
-
-    private void setRetrofit() {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://54.180.147.7")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        retrofitAPI = retrofit.create(RetrofitAPI.class);
-    }
 }

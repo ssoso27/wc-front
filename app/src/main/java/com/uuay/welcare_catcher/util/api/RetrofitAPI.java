@@ -2,6 +2,7 @@ package com.uuay.welcare_catcher.util.api;
 
 import com.uuay.welcare_catcher.model.Account;
 import com.uuay.welcare_catcher.model.Facility;
+import com.uuay.welcare_catcher.model.RequestLogin;
 
 import java.util.List;
 
@@ -26,4 +27,8 @@ public interface RetrofitAPI {
 
     @GET("accounts/duplicate-email")
     Call<String> duplicateEmail(@Query("email") String email);
+
+    @Headers("Content-Type: application/json")
+    @POST("accounts/login")
+    Call<String> login(@Body RequestLogin requestLogin);
 }
