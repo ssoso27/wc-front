@@ -14,60 +14,6 @@
     tools:context="com.uuay.welcare_catcher.view.welfareList.WelfareListFragment"
     tools:showIn="@layout/frag_welfare_list">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="30dp"
-        android:paddingBottom="30dp"
-        android:paddingLeft="30dp"
-        android:paddingRight="30dp">
-
-        <Button
-            android:id="@+id/btn1"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:background="@color/guillotine_background_point"
-            android:text="전체"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true" />
-
-        <Button
-            android:id="@+id/btn2"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:background="@color/guillotine_background_point"
-            android:text="생활"
-            android:layout_marginLeft="22dp"
-            android:layout_toRightOf="@+id/btn1"
-            android:layout_alignParentTop="true" />
-
-        <Button
-            android:id="@+id/btn3"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:background="@color/guillotine_background_point"
-            android:text="교육"
-            android:layout_marginLeft="22dp"
-            android:layout_toRightOf="@+id/btn2"
-            android:layout_alignParentTop="true" />
-
-        <Button
-            android:id="@+id/btn4"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:background="@color/guillotine_background_point"
-            android:text="민간"
-            android:layout_marginLeft="22dp"
-            android:layout_toRightOf="@+id/btn3"
-            android:layout_alignParentTop="true" />
-
-
-    </RelativeLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -82,7 +28,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:textColor="@color/gray6"
-            android:textSize="13dp"
+            android:textSize="16dp"
             android:text="검색" />
 
         <Button

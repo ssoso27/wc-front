@@ -3,6 +3,7 @@ package com.uuay.welcare_catcher.model;
 import java.util.Date;
 
 public class WelfareService {
+    private Long id;
     private String serviceId;
     private String name;
     private String classification;
@@ -11,6 +12,14 @@ public class WelfareService {
     private String period;
     private String url;
     private Date registedAt;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getServiceId() {
         return serviceId;

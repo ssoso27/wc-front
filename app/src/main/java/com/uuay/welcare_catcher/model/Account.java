@@ -1,6 +1,7 @@
 package com.uuay.welcare_catcher.model;
 
 public class Account {
+    private Long id;
     private String nickname;
     private String profile_img;
     private String email;
@@ -11,6 +12,14 @@ public class Account {
     private String disability_grade;
 
     public Account() {}
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getNickname() {
         return nickname;
