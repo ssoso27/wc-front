@@ -77,6 +77,7 @@ public class WelfareListFragment extends Fragment {
             for (int i = 0; i < list.size(); i++) {
                 WelfareService service = list.get(i);
                 adapter.addItem(
+                        service.getId(),
                         service.getName(),
                         service.getApplication_agency(),
                         service.getApplication_method(),

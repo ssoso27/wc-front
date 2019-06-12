@@ -6,6 +6,7 @@ import com.uuay.welcare_catcher.GlobalApplication;
 import com.uuay.welcare_catcher.model.Account;
 import com.uuay.welcare_catcher.model.Facility;
 import com.uuay.welcare_catcher.model.RequestLogin;
+import com.uuay.welcare_catcher.model.RequestToggle;
 import com.uuay.welcare_catcher.model.WelfareService;
 import com.uuay.welcare_catcher.util.LocalCookie;
 
@@ -142,5 +143,24 @@ public class APIRequester {
         }
 
         return null;
+    }
+
+    public Boolean toggle(Long accountId, Long serviceId) {
+        Boolean isOn = false;
+
+        try {
+            RequestToggle requestToggle = new RequestToggle(accountId, serviceId);
+            Call<Boolean> call = retrofitAPI.toggle(requestToggle);
+            Response<Boolean> response = call.execute();
+
+            if (response.isSuccessful()) {
+                isOn = response.body();
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return isOn;
     }
 }

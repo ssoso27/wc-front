@@ -3,6 +3,7 @@ package com.uuay.welcare_catcher.util.api;
 import com.uuay.welcare_catcher.model.Account;
 import com.uuay.welcare_catcher.model.Facility;
 import com.uuay.welcare_catcher.model.RequestLogin;
+import com.uuay.welcare_catcher.model.RequestToggle;
 import com.uuay.welcare_catcher.model.WelfareService;
 
 import java.util.List;
@@ -39,4 +40,8 @@ public interface RetrofitAPI {
             , @Query("size") int size
             , @Query("page") int page
     );
+
+    @Headers("Content-Type: application/json")
+    @POST("receive-services/toggle")
+    Call<Boolean> toggle(@Body RequestToggle requestToggle);
 }

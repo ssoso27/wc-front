@@ -54,6 +54,12 @@
                 android:padding="10dp"
                 android:text="제공 부처"
                 android:textColor="#666666" />
+
+            <Button
+                android:id="@+id/btn_toggle"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="받는중" />
         </LinearLayout>
 
         <!--<TextView-->
