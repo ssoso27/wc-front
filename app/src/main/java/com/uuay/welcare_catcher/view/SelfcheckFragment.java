@@ -15,6 +15,7 @@ import android.widget.Spinner;
 
 import com.uuay.welcare_catcher.R;
 import com.uuay.welcare_catcher.util.FragmentChanger;
+import com.uuay.welcare_catcher.view.selfcheckList.SelfCheckList;
 
 public class SelfcheckFragment extends Fragment {
     String gender, agegroup, type, grade, area;
@@ -151,7 +152,7 @@ public class SelfcheckFragment extends Fragment {
                 args.putString("type", type);
                 args.putString("grade", grade);
 
-                Fragment fragment = new TestFragment();
+                Fragment fragment = new SelfCheckList();
                 fragment.setArguments(args);
                 FragmentChanger.setFragment((AppCompatActivity) getActivity(), fragment);
             }
