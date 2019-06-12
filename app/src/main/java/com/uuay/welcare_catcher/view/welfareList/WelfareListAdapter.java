@@ -14,6 +14,7 @@ import com.uuay.welcare_catcher.GlobalApplication;
 import com.uuay.welcare_catcher.R;
 import com.uuay.welcare_catcher.model.Account;
 import com.uuay.welcare_catcher.model.WelfareService;
+import com.uuay.welcare_catcher.util.LocalCookie;
 import com.uuay.welcare_catcher.util.api.APIRequester;
 
 import java.text.SimpleDateFormat;
@@ -68,13 +69,21 @@ public class WelfareListAdapter extends BaseAdapter {
         tvMethod.setText(item.getApplication_method());
         SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY.MM.DD");
         tvRegistedAt.setText(dateFormat.format(item.getRegistedAt()));
-        btnToggle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Account account = GlobalApplication.getCurrentAccount();
-                new ToggleAsync().execute(account.getId(), item.getId());
-            }
-        });
+
+        LocalCookie localCookie = LocalCookie.getInstance();
+        if (!localCookie.isEmpty()) {
+            btnToggle.setText("받는 복지 표시");
+
+            btnToggle.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Account account = GlobalApplication.getCurrentAccount();
+                    new ToggleAsync().execute(account.getId(), item.getId());
+                }
+            });
+        } else {
+            btnToggle.setVisibility(View.GONE);
+        }
 
         return convertView;
     }
