@@ -64,7 +64,7 @@ public class SelfCheckList extends Fragment {
                         service.getApplication_agency(),
                         service.getApplication_method(),
                         service.getUrl(),
-                        service.getRegistedAt());ㅎ
+                        service.getRegistedAt());
             }
         }
 

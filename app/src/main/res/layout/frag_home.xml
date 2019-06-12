@@ -6,50 +6,43 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/gray0"
-    android:paddingLeft="20dp">
+    android:gravity="center">
 
 
     <TextView
         android:id="@+id/tv_home_received"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="30dp"
         android:text="받고 있는 혜택"
         android:textSize="24sp"
         android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/tv_home_list1"
-        android:layout_width="match_parent"
-        android:layout_height="149dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="20dp"
-        android:background="#dfdfdfdf"
-        android:gravity="center"
-        android:text="아직 자가진단을 하지 않았습니다. \n 자가진단을 해보세요."
-        android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/tv_home_toreceive"
+    <FrameLayout
+        android:id="@+id/frame_service"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="70dp"
-        android:text="받을 수 있는 혜택"
-        android:textSize="24sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/tv_home_list2"
-        android:layout_width="match_parent"
-        android:layout_height="149dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="20dp"
-        android:background="#dfdfdfdf"
+        android:layout_height="300dp"
         android:gravity="center"
-        android:text="아직 자가진단을 하지 않았습니다. \n 자가진단을 해보세요."
-        android:textSize="20sp" />
+        android:padding="15dp">
+
+        <TextView
+            android:id="@+id/tv_default"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:background="@color/gray1"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:text="아직 자가진단을 하지 않았습니다. \n 자가진단을 해보세요."
+            android:textSize="20sp" />
+        
+        <ListView
+            android:id="@+id/lv_services"
+            android:background="@color/gray1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </FrameLayout>
 
     <Button
         android:id="@+id/btn_home_to_sc"
