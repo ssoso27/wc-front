@@ -39,4 +39,11 @@ public interface RetrofitAPI {
             , @Query("size") int size
             , @Query("page") int page
     );
+
+    @GET("services")
+    Call<List<WelfareService>> finda(
+        @Query("disability_grade") String disability_grade
+        , @Query("age_group") String age_group
+        , @Query("disability_type") String disability_type
+    );
 }

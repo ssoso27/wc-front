@@ -10,10 +10,11 @@ import android.widget.Button;
 
 import com.uuay.welcare_catcher.R;
 import com.uuay.welcare_catcher.util.FragmentChanger;
+import com.uuay.welcare_catcher.view.selfcheckList.SelfCheckList;
 
 public class HomeFragment extends Fragment {
     SelfcheckFragment sf = new SelfcheckFragment();
-    Fragment testF = new TestFragment();
+    Fragment testF = new SelfCheckList();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
