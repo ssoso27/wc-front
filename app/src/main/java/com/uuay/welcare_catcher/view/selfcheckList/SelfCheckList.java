@@ -84,7 +84,6 @@ public class SelfCheckList extends Fragment {
             return list;
         }
 
-        // 이거를 호출해야 되는 거 같은데......
         @Override
         protected void onPostExecute(List<WelfareService> list) {
             listViewDataAdd(list);
