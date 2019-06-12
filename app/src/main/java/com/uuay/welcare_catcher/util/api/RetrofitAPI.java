@@ -42,6 +42,7 @@ public interface RetrofitAPI {
             , @Query("page") int page
     );
 
+
     @Headers("Content-Type: application/json")
     @POST("receive-services/toggle")
     Call<Boolean> toggle(@Body RequestToggle requestToggle);
@@ -51,5 +52,12 @@ public interface RetrofitAPI {
             @Path("id") Long id
             , @Query("size") int size
             , @Query("page") int page
+    );
+
+    @GET("services")
+    Call<List<WelfareService>> finda(
+        @Query("disability_grade") String disability_grade
+        , @Query("age_group") String age_group
+        , @Query("disability_type") String disability_type
     );
 }

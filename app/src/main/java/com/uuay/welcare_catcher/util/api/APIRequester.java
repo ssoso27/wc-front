@@ -156,12 +156,34 @@ public class APIRequester {
             if (response.isSuccessful()) {
                 isOn = response.body();
             }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return isOn;
+    }
 
+    public ArrayList<WelfareService> finda(String disability_grade, String age_group, String disability_type) {
+        ArrayList<WelfareService> services = null;
+
+        try {
+            Call<List<WelfareService>> call = retrofitAPI.finda(disability_grade, age_group, disability_type);
+            Response<List<WelfareService>> response = call.execute();
+
+            if(response.isSuccessful()) {
+                ArrayList<WelfareService> list = (ArrayList<WelfareService>) response.body();
+                if (list != null) {
+                    services = list;
+                    Log.d("궁금해", list.get(0).getName());
+                    Log.d("2", list.get(0).getRegistedAt().toString());
+                }
+            }
+
+            return services;
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return isOn;
+        return null;
     }
 
     public List<WelfareService> receivedList(Long accountId, int size, int page) {

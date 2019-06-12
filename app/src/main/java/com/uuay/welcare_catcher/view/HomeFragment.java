@@ -26,7 +26,6 @@ import java.util.List;
 
 public class HomeFragment extends Fragment {
     SelfcheckFragment sf = new SelfcheckFragment();
-    Fragment testF = new TestFragment();
     TextView tvDefault;
     ListView lvReceive;
     int size, page;
