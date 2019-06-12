@@ -44,8 +44,7 @@ public class SelfCheckList extends Fragment {
 
             new ServiceListAsync().execute(grade, agegroup, type);
         }
-
-        SelfCheckListAdapter adapter = new SelfCheckListAdapter();
+        WelfareListAdapter adapter = new WelfareListAdapter();
 
         lvServices = (ListView) view.findViewById(R.id.lv_selfcheck);
         lvServices.setAdapter(adapter);
@@ -54,17 +53,18 @@ public class SelfCheckList extends Fragment {
     }
 
     private void listViewDataAdd(List<WelfareService> list) {
-        SelfCheckListAdapter adapter = new SelfCheckListAdapter();
+        WelfareListAdapter adapter = new WelfareListAdapter();
 
         if (list != null) {
             for (int i = 0; i < list.size(); i++) {
                 WelfareService service = list.get(i);
                 adapter.addItem(
+                        service.getId(),
                         service.getName(),
                         service.getApplication_agency(),
                         service.getApplication_method(),
-                        service.getUrl(),
-                        service.getRegistedAt());
+                        service.getRegistedAt()
+                );
             }
         }
 
