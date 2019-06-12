@@ -163,4 +163,25 @@ public class APIRequester {
 
         return isOn;
     }
+
+    public List<WelfareService> receivedList(Long accountId, int size, int page) {
+        List<WelfareService> services = null;
+
+        try {
+            Call<List<WelfareService>> call = retrofitAPI.receivedList(accountId, size, page);
+            Response<List<WelfareService>> response = call.execute();
+
+            if (response.isSuccessful()) {
+                ArrayList<WelfareService> list = (ArrayList<WelfareService>) response.body();
+                if (list != null) {
+                    services = list;
+                }
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return services;
+    }
 }

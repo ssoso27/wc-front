@@ -13,6 +13,7 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface RetrofitAPI {
@@ -44,4 +45,11 @@ public interface RetrofitAPI {
     @Headers("Content-Type: application/json")
     @POST("receive-services/toggle")
     Call<Boolean> toggle(@Body RequestToggle requestToggle);
+
+    @GET("receive-services/account/{id}")
+    Call<List<WelfareService>> receivedList(
+            @Path("id") Long id
+            , @Query("size") int size
+            , @Query("page") int page
+    );
 }
